@@ -1,3 +1,4 @@
+/* eslint-disable react/only-export-components */
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import api from '../services/api';
 
@@ -37,7 +38,6 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Error de credenciales.';
-      const status = error.response?.status;
       const requestId = error.response?.data?.requestId;
       const isInactive = error.response?.data?.errorCode === 'ACCOUNT_INACTIVE' || errorMsg.toLowerCase().includes('inactiv');
 

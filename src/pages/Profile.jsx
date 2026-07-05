@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 
 const Profile = () => {
-  const { user, refreshUser } = useAuth();
+  const { refreshUser } = useAuth();
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,7 +13,6 @@ const Profile = () => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const [requestId, setRequestId] = useState(null);
-  const [success, setSuccess] = useState(false);
 
   const loadProfile = async () => {
     try {
@@ -45,12 +44,9 @@ const Profile = () => {
     setSaving(true);
     setError(null);
     setRequestId(null);
-    setSuccess(false);
-
     try {
       await api.patch('/users/me', { name, email });
       await refreshUser(); // Actualizar estado global del usuario
-      setSuccess(true);
       alert('¡Perfil actualizado con éxito!');
     } catch (err) {
       setError(err.response?.data?.message || 'Error al guardar los cambios de perfil.');

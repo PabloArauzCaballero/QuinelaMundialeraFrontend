@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const Login = () => {
-  const [activeTab, setActiveTab] = useState('login'); // 'login' | 'register'
+const Login = ({ initialMode = 'login' }) => {
+  const [activeTab, setActiveTab] = useState(initialMode); // 'login' | 'register'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
@@ -13,6 +13,10 @@ const Login = () => {
 
   const { login, register } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setActiveTab(initialMode);
+  }, [initialMode]);
 
   // Validaciones locales de la contraseña para registro
   const hasMinLength = password.length >= 10;
@@ -69,7 +73,7 @@ const Login = () => {
             }}
           ></div>
           <div className="absolute inset-0 z-10 auth-hero-gradient mix-blend-multiply"></div>
-          <div className="relative z-20 text-on-primary flex flex-col items-center">
+          <div className="relative z-20 text-on-surface flex flex-col items-center">
             <span className="material-symbols-outlined text-[64px] mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>sports_soccer</span>
             <h1 className="font-display-lg text-[32px] md:text-[40px] font-bold mb-2 tracking-tight">Quiniela Mundial 2026</h1>
             <p className="font-body-sm text-[14px] max-w-xs opacity-90 hidden md:block">
