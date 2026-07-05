@@ -12,17 +12,17 @@ const Layout = ({ children }) => {
   };
 
   const navItems = [
-    { to: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
-    { to: '/fixture', label: 'Fixture', icon: 'calendar_today' },
+    { to: '/dashboard', label: 'Panel Principal', icon: 'dashboard' },
+    { to: '/fixture', label: 'Calendario', icon: 'calendar_today' },
     { to: '/groups', label: 'Grupos', icon: 'groups' },
     { to: '/history', label: 'Historial', icon: 'history' },
-    { to: '/map', label: 'Mapa Sedes', icon: 'map' },
+    { to: '/map', label: 'Mapa de Sedes', icon: 'map' },
     { to: '/profile', label: 'Mi Perfil', icon: 'person' },
   ];
 
   // Si el usuario es administrador, agregar el panel de administración al menú
   if (isAdmin) {
-    navItems.push({ to: '/admin', label: 'Admin Panel', icon: 'admin_panel_settings' });
+    navItems.push({ to: '/admin', label: 'Panel de Administración', icon: 'admin_panel_settings' });
   }
 
   const linkClass = ({ isActive }) =>
@@ -69,8 +69,8 @@ const Layout = ({ children }) => {
       {/* SideNavBar (Desktop) */}
       <nav className="hidden md:flex flex-col fixed left-0 top-16 bottom-0 w-64 p-sm overflow-y-auto bg-surface-container-low dark:bg-surface-container-highest border-r border-outline-variant dark:border-on-surface-variant">
         <div className="mb-lg px-xs py-sm border-b border-outline-variant">
-          <h2 className="font-headline-md text-headline-md text-primary dark:text-secondary-fixed">Tournament Hub</h2>
-          <p className="font-body-sm text-body-sm text-on-surface-variant">FIFA World Cup 2026</p>
+          <h2 className="font-headline-md text-headline-md text-primary dark:text-secondary-fixed">Centro del Torneo</h2>
+          <p className="font-body-sm text-body-sm text-on-surface-variant">Copa Mundial FIFA 2026</p>
         </div>
 
         <ul className="flex flex-col gap-xs flex-1">

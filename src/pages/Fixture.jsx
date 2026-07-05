@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import TeamBadge from '../components/TeamBadge';
 
 const Fixture = () => {
   const [matches, setMatches] = useState([]);
@@ -241,13 +242,8 @@ const Fixture = () => {
               <div className="flex items-center justify-between px-2 py-4 bg-surface-container-low border border-outline-variant rounded-lg">
                 
                 {/* Local */}
-                <div className="flex flex-col items-center gap-xs w-1/3 text-center">
-                  {selectedMatch.homeTeam?.flagUrl ? (
-                    <img src={selectedMatch.homeTeam.flagUrl} alt={selectedMatch.homeTeam.name} className="w-10 h-10 object-contain rounded-md" />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center font-bold text-xs">{selectedMatch.homeTeam?.fifaCode}</div>
-                  )}
-                  <span className="font-label-bold text-xs text-on-surface line-clamp-1">{selectedMatch.homeTeam?.name}</span>
+                <div className="w-1/3 flex justify-center">
+                  <TeamBadge team={selectedMatch.homeTeam} layout="vertical" showFullName={true} />
                 </div>
 
                 {/* Inputs de marcador */}
@@ -278,13 +274,8 @@ const Fixture = () => {
                 </div>
 
                 {/* Visitante */}
-                <div className="flex flex-col items-center gap-xs w-1/3 text-center">
-                  {selectedMatch.awayTeam?.flagUrl ? (
-                    <img src={selectedMatch.awayTeam.flagUrl} alt={selectedMatch.awayTeam.name} className="w-10 h-10 object-contain rounded-md" />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center font-bold text-xs">{selectedMatch.awayTeam?.fifaCode}</div>
-                  )}
-                  <span className="font-label-bold text-xs text-on-surface line-clamp-1">{selectedMatch.awayTeam?.name}</span>
+                <div className="w-1/3 flex justify-center">
+                  <TeamBadge team={selectedMatch.awayTeam} layout="vertical" showFullName={true} />
                 </div>
               </div>
 
@@ -346,13 +337,8 @@ const Fixture = () => {
                 {/* Marcadores e Información */}
                 <div className="flex items-center justify-between">
                   {/* Local */}
-                  <div className="flex items-center gap-2 w-5/12">
-                    {match.homeTeam?.flagUrl ? (
-                      <img src={match.homeTeam.flagUrl} alt={match.homeTeam.name} className="w-8 h-8 object-contain rounded-md" />
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-bold text-[10px]">{match.homeTeam?.fifaCode}</div>
-                    )}
-                    <span className="font-label-bold text-xs text-on-surface truncate">{match.homeTeam?.name}</span>
+                  <div className="w-5/12 flex items-center justify-start">
+                    <TeamBadge team={match.homeTeam} layout="horizontal" showFullName={true} />
                   </div>
 
                   {/* Marcador Real */}
@@ -365,13 +351,8 @@ const Fixture = () => {
                   </div>
 
                   {/* Visitante */}
-                  <div className="flex items-center gap-2 w-5/12 justify-end text-right">
-                    <span className="font-label-bold text-xs text-on-surface truncate">{match.awayTeam?.name}</span>
-                    {match.awayTeam?.flagUrl ? (
-                      <img src={match.awayTeam.flagUrl} alt={match.awayTeam.name} className="w-8 h-8 object-contain rounded-md" />
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-bold text-[10px]">{match.awayTeam?.fifaCode}</div>
-                    )}
+                  <div className="w-5/12 flex items-center justify-end text-right">
+                    <TeamBadge team={match.awayTeam} layout="horizontal" showFullName={true} />
                   </div>
                 </div>
 

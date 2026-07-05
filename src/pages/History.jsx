@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import TeamBadge from '../components/TeamBadge';
 
 const History = () => {
   const [predictions, setPredictions] = useState([]);
@@ -113,13 +114,8 @@ const History = () => {
                 {/* Equipos y Marcadores */}
                 <div className="flex items-center justify-between py-2">
                   {/* Local */}
-                  <div className="flex items-center gap-2 w-5/12">
-                    {match.homeTeam?.flagUrl ? (
-                      <img src={match.homeTeam.flagUrl} alt={match.homeTeam.name} className="w-8 h-8 object-contain rounded-md" />
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-bold text-[10px]">{match.homeTeam?.fifaCode}</div>
-                    )}
-                    <span className="font-label-bold text-xs text-on-surface truncate">{match.homeTeam?.name}</span>
+                  <div className="w-5/12 flex items-center justify-start">
+                    <TeamBadge team={match.homeTeam} layout="horizontal" showFullName={true} />
                   </div>
 
                   {/* Marcadores pronosticados vs marcadores reales */}
@@ -135,13 +131,8 @@ const History = () => {
                   </div>
 
                   {/* Visitante */}
-                  <div className="flex items-center gap-2 w-5/12 justify-end text-right">
-                    <span className="font-label-bold text-xs text-on-surface truncate">{match.awayTeam?.name}</span>
-                    {match.awayTeam?.flagUrl ? (
-                      <img src={match.awayTeam.flagUrl} alt={match.awayTeam.name} className="w-8 h-8 object-contain rounded-md" />
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-bold text-[10px]">{match.awayTeam?.fifaCode}</div>
-                    )}
+                  <div className="w-5/12 flex items-center justify-end text-right">
+                    <TeamBadge team={match.awayTeam} layout="horizontal" showFullName={true} />
                   </div>
                 </div>
 

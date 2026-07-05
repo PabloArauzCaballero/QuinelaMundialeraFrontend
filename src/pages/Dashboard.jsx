@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import TeamBadge from '../components/TeamBadge';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -162,13 +163,8 @@ const Dashboard = () => {
 
                     <div className="flex items-center justify-between px-2 md:px-6 py-2">
                       {/* Local */}
-                      <div className="flex flex-col items-center gap-xs w-1/3 text-center">
-                        {match.homeTeam?.flagUrl ? (
-                          <img src={match.homeTeam.flagUrl} alt={match.homeTeam.name} className="w-10 h-10 object-contain rounded-md" />
-                        ) : (
-                          <div className="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center font-bold text-xs">{match.homeTeam?.fifaCode || 'LOC'}</div>
-                        )}
-                        <span className="font-label-bold text-sm text-on-surface line-clamp-1">{match.homeTeam?.name}</span>
+                      <div className="w-1/3 flex justify-center">
+                        <TeamBadge team={match.homeTeam} layout="vertical" showFullName={true} />
                       </div>
 
                       {/* Inputs de marcador */}
@@ -195,13 +191,8 @@ const Dashboard = () => {
                       </div>
 
                       {/* Visitante */}
-                      <div className="flex flex-col items-center gap-xs w-1/3 text-center">
-                        {match.awayTeam?.flagUrl ? (
-                          <img src={match.awayTeam.flagUrl} alt={match.awayTeam.name} className="w-10 h-10 object-contain rounded-md" />
-                        ) : (
-                          <div className="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center font-bold text-xs">{match.awayTeam?.fifaCode || 'VIS'}</div>
-                        )}
-                        <span className="font-label-bold text-sm text-on-surface line-clamp-1">{match.awayTeam?.name}</span>
+                      <div className="w-1/3 flex justify-center">
+                        <TeamBadge team={match.awayTeam} layout="vertical" showFullName={true} />
                       </div>
                     </div>
 
