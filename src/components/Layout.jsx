@@ -17,6 +17,7 @@ const Layout = ({ children }) => {
     { to: '/groups', label: 'Grupos', icon: 'groups' },
     { to: '/history', label: 'Historial', icon: 'history' },
     { to: '/map', label: 'Mapa Sedes', icon: 'map' },
+    { to: '/profile', label: 'Mi Perfil', icon: 'person' },
   ];
 
   // Si el usuario es administrador, agregar el panel de administración al menú

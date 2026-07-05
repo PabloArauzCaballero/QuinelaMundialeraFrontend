@@ -10,6 +10,7 @@ import Fixture from './pages/Fixture';
 import History from './pages/History';
 import Map from './pages/Map';
 import Admin from './pages/Admin';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -70,6 +71,16 @@ function App() {
               <ProtectedRoute>
                 <Layout>
                   <Map />
+                </Layout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/profile" 
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <Profile />
                 </Layout>
               </ProtectedRoute>
             } 
