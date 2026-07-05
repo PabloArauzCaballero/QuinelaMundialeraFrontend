@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Venues Map - Quiniela Mundial 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#b8c4ff",
+                      "on-secondary-fixed-variant": "#5c4300",
+                      "on-surface-variant": "#444653",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#a8b8ff",
+                      "background": "#f8f9fb",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#f9bd22",
+                      "primary-fixed": "#dde1ff",
+                      "surface": "#f8f9fb",
+                      "secondary-container": "#ffc329",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "inverse-on-surface": "#f0f1f3",
+                      "on-primary-fixed": "#001453",
+                      "on-secondary-fixed": "#261a00",
+                      "surface-container-high": "#e7e8ea",
+                      "inverse-surface": "#2e3132",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-container-low": "#f3f4f6",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#002113",
+                      "primary-container": "#1e40af",
+                      "tertiary": "#003d27",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#795900",
+                      "tertiary-container": "#00563a",
+                      "on-primary-fixed-variant": "#173bab",
+                      "surface-container-highest": "#e1e2e4",
+                      "on-tertiary-container": "#3fd298",
+                      "surface-variant": "#e1e2e4",
+                      "surface-tint": "#3755c3",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-error": "#ffffff",
+                      "primary": "#00288e",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "outline-variant": "#c4c5d5",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#edeef0",
+                      "surface-dim": "#d9dadc",
+                      "surface-bright": "#f8f9fb",
+                      "on-background": "#191c1e",
+                      "on-surface": "#191c1e",
+                      "outline": "#757684",
+                      "on-secondary-container": "#6f5100",
+                      "secondary-fixed": "#ffdf9f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "64px",
+                      "container-max": "1280px",
+                      "sm": "16px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "gutter": "20px",
+                      "md": "24px",
+                      "lg": "40px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Archivo Narrow"],
+                      "headline-lg-mobile": ["Archivo Narrow"],
+                      "body-md": ["Inter"],
+                      "stat-value": ["Archivo Narrow"],
+                      "display-lg": ["Archivo Narrow"],
+                      "headline-md": ["Archivo Narrow"],
+                      "label-bold": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "stat-value": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .pin-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 bottom-0 w-64 p-sm overflow-y-auto bg-surface-container-low border-r border-outline-variant z-40">
+<div class="mb-lg pt-md px-xs">
+<h1 class="font-headline-md text-headline-md text-primary">Quiniela Mundial 2026</h1>
+</div>
+<div class="mb-md px-xs">
+<div class="flex items-center gap-sm mb-xs">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A small circular user avatar showing a professional looking person in a well lit studio setting, bright modern colors, high resolution, soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1qxQIbA4Gbmph7VaTuemJb-y8ra1e9zmtEszcY6Uy5tWnttrQp-UceB38nEDEa9I8lv__6GcHSRavlzvJbP6enTHn3AYCmXlqD4oYjlBc_x5vLr6yqe9OtV4zKCkSFNDzi4ezGqiOAySceqBOK8TleBhMxb8KiPNmN2q3ex1JooQAWbi_-AhVFjw7VrCXLK9F6Of8vrVuSN48EwXLa7R3nH0bos-IfOQK_ENJzbi9So2dhMwW6CP4Fva1i7o3a4IaqR-Vloj2xveI">
+<div>
+<h2 class="font-label-bold text-label-bold text-on-surface">Tournament Hub</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">FIFA World Cup 2026</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-xs flex-1">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-bold text-label-bold">Fixture</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-bold text-label-bold">Groups</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-bold text-label-bold">History</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-full transition-all scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-bold text-label-bold">Map</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pt-md flex flex-col gap-sm px-xs">
+<button class="w-full bg-[#FBBF24] text-[#111827] font-label-bold text-label-bold py-sm rounded-full shadow hover:opacity-90 transition-opacity">
+                Place Prediction
+            </button>
+<ul class="flex flex-col gap-xs mt-sm border-t border-outline-variant pt-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-bold text-label-bold">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopAppBar (Mobile) -->
+<header class="fixed top-0 left-0 w-full z-50 flex lg:hidden justify-between items-center px-sm h-16 bg-surface border-b border-outline-variant">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Quiniela Mundial 2026</h1>
+<div class="flex gap-xs">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img class="w-8 h-8 rounded-full object-cover ml-xs border border-outline-variant" data-alt="A small circular user avatar showing a professional looking person in a well lit studio setting, bright modern colors, high resolution, soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqdKisCynfJP_7FmU_elc8mhyJosWNN5UT1jOY-bAyc5d7732NiVcVXFhduYtJKfdvpLFCTFMmQ_BFPKarzABgzB4KSfjM14q0LTxbHGMgtBCBTudhCWwBRDI9fVWr6dB7D3jTn_jISUp1h4zBx_geUQtGeUauwdam46Lqj0QS8ohK93-Nq_LQVwYSlepkc7W6U8q-sDwHz4qQcY7GTbmflsVnlUEx8UN2Dxi4mrmtoRXFojORO0bhGo77TnuPRHslBkqMM4cSwrup">
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex relative w-full h-screen lg:ml-64 pt-16 lg:pt-0">
+<!-- Interactive Map Area -->
+<div class="absolute inset-0 z-0 bg-surface-container-highest">
+<!-- Simulated Map Background -->
+<img class="w-full h-full object-cover opacity-80" data-alt="A highly detailed, high-resolution digital map of North America stylized in a modern, clean light-mode aesthetic. The map uses subtle tonal shifts of grays and whites with sharp, crisp vector-like borders. The lighting is even and flat, resembling a high-end data visualization dashboard. No text or labels, just geography." data-location="North America Map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSexh-amwihHN6IQJfeLNdVvhHi5hzmqVtvBXHLYX8blhyCZ-e9GBi2A_ZQM--pxnJZWjbut8JQZmy3jHsfYtxzDNPcHTxa4i96-tzTMyqLm15sOFtxH09k-RgWiahQn9_wJ1nyLcGgQ2wRDOVcUksNOTVbxMLQ86qy9dmpYOpTEDOA2H8ui1jPf_rHPIo-HPzsFUhyMr8udjh7EMLiYfqVRAt9uLin37PJ7m7pOCma3iWsnuVEcrDoX9WE3HH3gTQCZ7OULqVQCo-">
+<!-- Map Overlay Gradient for readability -->
+<div class="absolute inset-0 bg-gradient-to-r from-surface/40 to-transparent"></div>
+<!-- Stadium Pins (Simulated) -->
+<!-- Pin 1: Azteca -->
+<div class="absolute top-[60%] left-[30%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="toggleSidebar('azteca')">
+<div class="absolute inset-0 bg-primary/20 rounded-full pin-pulse group-hover:bg-primary/40"></div>
+<div class="relative bg-surface border-2 border-primary text-primary w-8 h-8 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]" data-icon="stadium">stadium</span>
+</div>
+</div>
+<!-- Pin 2: MetLife -->
+<div class="absolute top-[40%] left-[75%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="toggleSidebar('metlife')">
+<div class="absolute inset-0 bg-secondary-container/30 rounded-full pin-pulse"></div>
+<div class="relative bg-primary border-2 border-surface text-on-primary w-8 h-8 rounded-full flex items-center justify-center shadow-lg scale-110">
+<span class="material-symbols-outlined text-[18px]" data-icon="stadium">stadium</span>
+</div>
+<!-- Active Pin Label -->
+<div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-inverse-surface text-inverse-on-surface px-sm py-xs rounded-lg whitespace-nowrap shadow-xl z-10 flex flex-col items-center">
+<span class="font-label-bold text-label-bold">MetLife Stadium</span>
+<span class="font-body-sm text-body-sm text-outline-variant">New York/New Jersey, USA</span>
+</div>
+</div>
+<!-- Pin 3: SoFi -->
+<div class="absolute top-[45%] left-[20%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="toggleSidebar('sofi')">
+<div class="absolute inset-0 bg-primary/20 rounded-full pin-pulse group-hover:bg-primary/40"></div>
+<div class="relative bg-surface border-2 border-primary text-primary w-8 h-8 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]" data-icon="stadium">stadium</span>
+</div>
+</div>
+</div>
+<!-- Venue Details Sidebar (Slide over on right) -->
+<aside class="absolute top-0 right-0 h-full w-full md:w-[400px] glass-panel shadow-2xl z-20 flex flex-col transform translate-x-0 transition-transform duration-300 border-l border-outline-variant" id="venue-sidebar">
+<!-- Sidebar Header -->
+<div class="p-md border-b border-outline-variant flex justify-between items-start bg-surface/50">
+<div>
+<div class="flex items-center gap-xs text-primary mb-xs">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider">New York / New Jersey, USA</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">MetLife Stadium</h2>
+<div class="flex items-center gap-sm font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-base"><span class="material-symbols-outlined text-[16px]" data-icon="group">group</span> 82,500</span>
+<span>•</span>
+<span>Elevation: 10m</span>
+</div>
+</div>
+<button class="p-xs rounded-full hover:bg-surface-variant text-on-surface-variant transition-colors md:hidden" onclick="closeSidebar()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Venue Image (Stylized) -->
+<div class="w-full h-48 relative border-b border-outline-variant bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A dramatic, high-angle architectural photograph of a massive, modern football stadium. The stadium features a sleek, metallic exterior reflecting bright daylight. The sky is clear blue. The pitch inside is pristine green. The style is hyper-realistic, high-contrast, suitable for a professional sports dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4randH3-4BlxLvgrGnmJ_9ZvRGSQdD6LVkYqyIZqZqXZftN5ylJhW714msTsZuo9lFno0zi3TuRTZuLxO0EUMvAF3rvFjiuaemzjLBLdXnN3sYioXmwaLU0ekxgPXMjSe1ds8Goe-ZSZS4Kl2DFh_u7q1HzNtUfSdxkkdlE3PETnx2xX7Gkq-S7yBFDOXJizLO1V-CCs9gOEeq-wYTSO0wuvqDDKzAiG6FXifFAXnD3Q-Qz_I13LInC-iYA37zWFAcC1eASaRI9sP">
+<div class="absolute bottom-0 left-0 w-full p-sm bg-gradient-to-t from-black/60 to-transparent">
+<span class="bg-surface/20 backdrop-blur-sm border border-white/20 text-white font-label-bold text-label-bold px-sm py-xs rounded-full">Final Host</span>
+</div>
+</div>
+<!-- Upcoming Matches Filtered List -->
+<div class="flex-1 overflow-y-auto p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span> Scheduled Fixtures
+                </h3>
+<div class="flex flex-col gap-sm">
+<!-- Match Card 1 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-sm hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#10B981]"></div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Group A • Match 12</span>
+<span class="font-label-bold text-label-bold bg-[#10B981] text-white px-xs py-base rounded flex items-center gap-base">
+<span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> LIVE
+                            </span>
+</div>
+<div class="flex justify-between items-center font-headline-md text-headline-md">
+<div class="flex items-center gap-xs w-1/3">
+<span class="text-xl">🇺🇸</span> <span>USA</span>
+</div>
+<div class="font-stat-value text-stat-value bg-surface-container px-sm py-xs rounded">1 - 0</div>
+<div class="flex items-center gap-xs w-1/3 justify-end">
+<span>WAL</span> <span class="text-xl">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+</div>
+</div>
+</div>
+<!-- Match Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-sm hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow cursor-pointer">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Group D • Match 28</span>
+<span class="font-label-bold text-label-bold text-outline">Jun 18, 15:00</span>
+</div>
+<div class="flex justify-between items-center font-headline-md text-headline-md">
+<div class="flex items-center gap-xs w-1/3">
+<span class="text-xl">🇫🇷</span> <span>FRA</span>
+</div>
+<div class="font-stat-value text-stat-value text-outline-variant">VS</div>
+<div class="flex items-center gap-xs w-1/3 justify-end">
+<span>AUS</span> <span class="text-xl">🇦🇺</span>
+</div>
+</div>
+</div>
+<!-- Match Card 3 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-sm hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow cursor-pointer opacity-75">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Round of 16 • Match 54</span>
+<span class="font-label-bold text-label-bold text-outline">Jul 02, 20:00</span>
+</div>
+<div class="flex justify-center items-center font-headline-md text-headline-md text-outline-variant italic">
+                            TBD vs TBD
+                        </div>
+</div>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant bg-surface/80 backdrop-blur-md">
+<button class="w-full border-2 border-[#1E40AF] text-[#1E40AF] font-label-bold text-label-bold py-sm rounded-full hover:bg-[#1E40AF] hover:text-white transition-colors">
+                    View Full Stadium Guide
+                </button>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-base py-xs bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Fixture</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">History</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-xs scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Map</span>
+</a>
+</nav>
+<script>
+        function toggleSidebar(stadiumId) {
+            const sidebar = document.getElementById('venue-sidebar');
+            // In a real app, this would fetch and populate data based on stadiumId
+            sidebar.classList.remove('translate-x-full');
+            sidebar.classList.add('translate-x-0');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('venue-sidebar');
+            // Only slide out on mobile/tablet, keeping it fixed on desktop is a common pattern, 
+            // but for demonstration we'll slide it out.
+            if(window.innerWidth < 768) {
+                sidebar.classList.add('translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+            }
+        }
+        
+        // Initial state for mobile
+        if(window.innerWidth < 768) {
+            document.getElementById('venue-sidebar').classList.add('translate-x-full');
+        }
+    </script>
+</body></html>

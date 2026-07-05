@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Dashboard - Quiniela Mundial 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#b8c4ff",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-surface-variant": "#444653",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "background": "#f8f9fb",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#f9bd22",
+                    "primary-fixed": "#dde1ff",
+                    "surface": "#f8f9fb",
+                    "secondary-container": "#ffc329",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "inverse-on-surface": "#f0f1f3",
+                    "on-primary-fixed": "#001453",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-container-high": "#e7e8ea",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-low": "#f3f4f6",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "primary-container": "#1e40af",
+                    "tertiary": "#003d27",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "tertiary-container": "#00563a",
+                    "on-primary-fixed-variant": "#173bab",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-tertiary-container": "#3fd298",
+                    "surface-variant": "#e1e2e4",
+                    "surface-tint": "#3755c3",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error": "#ffffff",
+                    "primary": "#00288e",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "outline-variant": "#c4c5d5",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#edeef0",
+                    "surface-dim": "#d9dadc",
+                    "surface-bright": "#f8f9fb",
+                    "on-background": "#191c1e",
+                    "on-surface": "#191c1e",
+                    "outline": "#757684",
+                    "on-secondary-container": "#6f5100",
+                    "secondary-fixed": "#ffdf9f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "container-max": "1280px",
+                    "sm": "16px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "gutter": "20px",
+                    "md": "24px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Archivo Narrow"],
+                    "headline-lg-mobile": ["Archivo Narrow"],
+                    "body-md": ["Inter"],
+                    "stat-value": ["Archivo Narrow"],
+                    "display-lg": ["Archivo Narrow"],
+                    "headline-md": ["Archivo Narrow"],
+                    "label-bold": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "stat-value": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .bento-card {
+            background-color: theme('colors.surface-container-lowest');
+            border: 1px solid theme('colors.surface-container-highest');
+            border-radius: theme('borderRadius.xl');
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+        .score-input {
+            width: 48px;
+            text-align: center;
+            font-family: 'Archivo Narrow', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            border: 1px solid theme('colors.outline-variant');
+            border-radius: theme('borderRadius.DEFAULT');
+            background-color: theme('colors.surface-container-lowest');
+            color: theme('colors.on-surface');
+        }
+        .score-input:focus {
+            outline: none;
+            border-color: theme('colors.primary-container');
+            box-shadow: 0 0 0 2px rgba(30, 64, 175, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16 md:pl-64 lg:pb-0 pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-sm md:px-md h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-sm">
+<span class="md:hidden material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+<h1 class="text-headline-md font-headline-lg-mobile font-bold text-primary dark:text-secondary-fixed">Quiniela Mundial 2026</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:text-primary dark:hover:text-secondary-fixed transition-colors text-on-surface-variant dark:text-outline-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:text-primary dark:hover:text-secondary-fixed transition-colors text-on-surface-variant dark:text-outline-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="User profile with tournament points and ranking" class="w-8 h-8 rounded-full border-2 border-primary object-cover" data-alt="A small circular user avatar showing a vibrant stylized illustration of a soccer fan with face paint, set against a bright stadium background. Clean, high-energy modern UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_LIPLU8UmabAdeJGjixAZ7kV98znbAkKZDcV1zV_ejzXRXS8iO-1DkNiUDfM2sr_AYIC5SXn8vvOdy5qRAtoHZZn1ncU6pTZ63nC16EHGkNTKlJtUxVSzdcoqymLj-URPudC4WUp_07WnNULlGcbG6fbtyFf5KlhweQ_gZto-Fx0dSSkDWSnCVOEsr3o_gZ0OXfJtJN0bMHutsOFNy8pZfc1vqgYsmhSLVrd9xMi_Rj93gy-NB1-1tO6KAmWH64arbB5OseIEk-Nj">
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-16 bottom-0 w-64 p-sm overflow-y-auto bg-surface-container-low dark:bg-surface-container-highest border-r border-outline-variant dark:border-on-surface-variant">
+<div class="mb-lg px-xs py-sm border-b border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-secondary-fixed">Tournament Hub</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">FIFA World Cup 2026</p>
+</div>
+<ul class="flex flex-col gap-xs flex-1">
+<li>
+<a class="flex items-center gap-sm p-sm bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full font-label-bold text-label-bold opacity-80 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-inverse-surface rounded-full transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+                    Fixture
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-inverse-surface rounded-full transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                    Groups
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-inverse-surface rounded-full transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                    History
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-inverse-surface rounded-full transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+                    Map
+                </a>
+</li>
+</ul>
+<div class="mt-auto flex flex-col gap-sm pt-md border-t border-outline-variant">
+<button class="w-full py-sm bg-[#FBBF24] text-[#111827] font-bold rounded-lg hover:opacity-90 transition-opacity">Place Prediction</button>
+<ul class="flex flex-col gap-xs mt-sm">
+<li>
+<a class="flex items-center gap-sm p-xs text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-inverse-surface rounded-full transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm p-xs text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-inverse-surface rounded-full transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        Settings
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-sm md:p-md lg:p-lg max-w-[1280px] mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-lg flex flex-col md:flex-row justify-between items-start md:items-end gap-sm">
+<div>
+<h2 class="font-display-lg text-display-lg md:text-display-lg font-bold text-primary mb-base">Welcome back, Striker</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The tournament is heating up. Make your predictions before kick-off.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-sm flex items-center gap-md">
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Global Rank</span>
+<span class="font-stat-value text-stat-value text-[#10B981]">#4,201</span>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Total Points</span>
+<span class="font-stat-value text-stat-value text-primary">1,450</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md md:gap-lg">
+<!-- Left Column: Pending Predictions -->
+<div class="lg:col-span-8 flex flex-col gap-md">
+<div class="flex justify-between items-center mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Matches</h3>
+<a class="font-label-bold text-label-bold text-primary hover:underline" href="#">View All Fixtures</a>
+</div>
+<!-- Match Card 1 -->
+<div class="bento-card p-md relative overflow-hidden">
+<div class="absolute top-0 right-0 px-sm py-xs bg-[#10B981] text-white font-label-bold text-label-bold rounded-bl-lg flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                        Kicks off in 2h
+                    </div>
+<div class="text-center mb-md pt-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Group A • Matchday 1</span>
+</div>
+<div class="flex items-center justify-between px-xs md:px-xl">
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-xl font-bold">MEX</div>
+<span class="font-headline-md text-headline-md text-center">Mexico</span>
+</div>
+<div class="flex flex-col items-center w-1/3">
+<div class="flex items-center gap-xs mb-sm">
+<input class="score-input" max="9" min="0" placeholder="-" type="number" value="">
+<span class="font-headline-md text-headline-md text-outline-variant">:</span>
+<input class="score-input" max="9" min="0" placeholder="-" type="number" value="">
+</div>
+<button class="bg-[#1E40AF] text-white font-label-bold text-label-bold px-md py-xs rounded-full hover:bg-opacity-90 transition-colors w-full max-w-[120px]">Save</button>
+</div>
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-xl font-bold">POL</div>
+<span class="font-headline-md text-headline-md text-center">Poland</span>
+</div>
+</div>
+</div>
+<!-- Match Card 2 -->
+<div class="bento-card p-md">
+<div class="text-center mb-md">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Group B • Matchday 1</span>
+</div>
+<div class="flex items-center justify-between px-xs md:px-xl">
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-xl font-bold">USA</div>
+<span class="font-headline-md text-headline-md text-center">USA</span>
+</div>
+<div class="flex flex-col items-center w-1/3">
+<div class="flex items-center gap-xs mb-sm">
+<input class="score-input" max="9" min="0" type="number" value="1">
+<span class="font-headline-md text-headline-md text-outline-variant">:</span>
+<input class="score-input" max="9" min="0" type="number" value="1">
+</div>
+<button class="bg-surface-container-high text-on-surface font-label-bold text-label-bold px-md py-xs rounded-full hover:bg-outline-variant transition-colors w-full max-w-[120px]">Update</button>
+</div>
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-xl font-bold">WAL</div>
+<span class="font-headline-md text-headline-md text-center">Wales</span>
+</div>
+</div>
+</div>
+<!-- Match Card 3 -->
+<div class="bento-card p-md">
+<div class="text-center mb-md">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Group C • Matchday 1</span>
+</div>
+<div class="flex items-center justify-between px-xs md:px-xl">
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-xl font-bold">ARG</div>
+<span class="font-headline-md text-headline-md text-center">Argentina</span>
+</div>
+<div class="flex flex-col items-center w-1/3">
+<div class="flex items-center gap-xs mb-sm">
+<input class="score-input" max="9" min="0" placeholder="-" type="number" value="">
+<span class="font-headline-md text-headline-md text-outline-variant">:</span>
+<input class="score-input" max="9" min="0" placeholder="-" type="number" value="">
+</div>
+<button class="bg-[#1E40AF] text-white font-label-bold text-label-bold px-md py-xs rounded-full hover:bg-opacity-90 transition-colors w-full max-w-[120px]">Save</button>
+</div>
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center text-xl font-bold">KSA</div>
+<span class="font-headline-md text-headline-md text-center">Saudi Arabia</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Groups -->
+<div class="lg:col-span-4 flex flex-col gap-md">
+<!-- Group Rankings -->
+<div class="bento-card p-md">
+<div class="flex justify-between items-center mb-sm border-b border-outline-variant pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">My Pools</h3>
+<span class="font-label-bold text-label-bold bg-surface-container-high px-xs py-base rounded">3 Active</span>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Group Item 1 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-[#FBBF24] text-[#111827] flex items-center justify-center font-bold font-headline-md">O</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Office Liga</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">42 Members</p>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-stat-value text-stat-value text-primary">#1</span>
+<span class="font-label-bold text-label-bold text-[#10B981] flex items-center text-[10px]"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> 2</span>
+</div>
+</div>
+<!-- Group Item 2 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-bold font-headline-md">F</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Family Feud</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">12 Members</p>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-stat-value text-stat-value text-on-surface">#4</span>
+<span class="font-label-bold text-label-bold text-outline-variant flex items-center text-[10px]"><span class="material-symbols-outlined text-[14px]">horizontal_rule</span></span>
+</div>
+</div>
+<!-- Group Item 3 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors cursor-pointer border border-transparent hover:border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold font-headline-md">G</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Global Public</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">100k+ Members</p>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-stat-value text-stat-value text-on-surface">#4.2k</span>
+<span class="font-label-bold text-label-bold text-error flex items-center text-[10px]"><span class="material-symbols-outlined text-[14px]">arrow_downward</span> 15</span>
+</div>
+</div>
+<button class="mt-xs w-full py-sm border border-outline-variant text-on-surface-variant font-label-bold text-label-bold rounded-lg hover:bg-surface-container-low transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span> Join New Pool
+                        </button>
+</div>
+</div>
+<!-- Recent Activity/Performance -->
+<div class="bento-card p-md relative">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm border-b border-outline-variant pb-sm">Accuracy Trend</h3>
+<div class="h-32 flex items-end gap-2 mt-md opacity-80">
+<div class="w-1/5 bg-primary-container rounded-t-sm h-[40%]" title="Matchday 1: 40%"></div>
+<div class="w-1/5 bg-primary-container rounded-t-sm h-[60%]" title="Matchday 2: 60%"></div>
+<div class="w-1/5 bg-primary-container rounded-t-sm h-[30%]" title="Matchday 3: 30%"></div>
+<div class="w-1/5 bg-primary-container rounded-t-sm h-[80%]" title="Matchday 4: 80%"></div>
+<div class="w-1/5 bg-[#10B981] rounded-t-sm h-[90%]" title="Matchday 5: 90%"></div>
+</div>
+<p class="text-center font-label-bold text-label-bold text-on-surface-variant mt-sm">Last 5 Matchdays</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-base py-xs bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-on-surface-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-xl p-xs scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-bold text-label-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-bold text-label-bold">Fixture</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-bold text-label-bold">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-bold text-label-bold">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant p-xs active:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-bold text-label-bold">Map</span>
+</a>
+</nav>
+</body></html>

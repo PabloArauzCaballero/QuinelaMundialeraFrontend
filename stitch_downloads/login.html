@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Quiniela Mundial 2026 - Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#b8c4ff",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-surface-variant": "#444653",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "background": "#f8f9fb",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#f9bd22",
+                    "primary-fixed": "#dde1ff",
+                    "surface": "#f8f9fb",
+                    "secondary-container": "#ffc329",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "inverse-on-surface": "#f0f1f3",
+                    "on-primary-fixed": "#001453",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-container-high": "#e7e8ea",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-low": "#f3f4f6",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "primary-container": "#1e40af",
+                    "tertiary": "#003d27",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "tertiary-container": "#00563a",
+                    "on-primary-fixed-variant": "#173bab",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-tertiary-container": "#3fd298",
+                    "surface-variant": "#e1e2e4",
+                    "surface-tint": "#3755c3",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error": "#ffffff",
+                    "primary": "#00288e",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "outline-variant": "#c4c5d5",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#edeef0",
+                    "surface-dim": "#d9dadc",
+                    "surface-bright": "#f8f9fb",
+                    "on-background": "#191c1e",
+                    "on-surface": "#191c1e",
+                    "outline": "#757684",
+                    "on-secondary-container": "#6f5100",
+                    "secondary-fixed": "#ffdf9f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "container-max": "1280px",
+                    "sm": "16px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "gutter": "20px",
+                    "md": "24px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Archivo Narrow"
+                    ],
+                    "headline-lg-mobile": [
+                            "Archivo Narrow"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "stat-value": [
+                            "Archivo Narrow"
+                    ],
+                    "display-lg": [
+                            "Archivo Narrow"
+                    ],
+                    "headline-md": [
+                            "Archivo Narrow"
+                    ],
+                    "label-bold": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "stat-value": [
+                            "20px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "52px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-bold": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Smooth tab transition */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .auth-hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 40, 142, 0.9) 0%, rgba(30, 64, 175, 0.8) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex items-center justify-center">
+<!-- Main Container - Dual Layout -->
+<main class="w-full max-w-[1200px] h-screen md:h-[800px] md:rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row bg-surface m-0 md:m-lg border border-outline-variant">
+<!-- Hero Section (Left on Desktop, Top on Mobile) -->
+<section class="w-full md:w-1/2 h-48 md:h-full relative overflow-hidden flex flex-col justify-center items-center text-center p-lg">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="A sweeping, high-angle view of a massive, modern football stadium at night. The stands are packed with a vibrant, cheering crowd, illuminated by intense, broadcast-quality floodlights piercing through the atmosphere. The pitch is pristine emerald green. The overall mood is high-energy, electrifying, and epic, fitting for a global sporting final. Corporate modern aesthetic with high contrast." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6P8DAF-GT0S6YNxPKUBx8PcQJ2ZY6rtJK7RA-ZdPNSVLZ7rQzM_pDTSsr0gKakvthVa218y3StntYnJ18XNSx_onr-ckwRPg4BFk546low9AhLjxMuySJeNoj20EJsvojgli-DO5cLXLavECh77CC7hDZtXjbU_JxkwMFT2B27Zfe5X_bYfUqmpYdQPyyzbFW3IuQIXfFPW1jM6q2dJAghnRYEdPnfgiM5Z-KprMOLanvbmunExwQz1iSi7eSaNXmcdH8l97X3XyT')"></div>
+<!-- Overlay -->
+<div class="absolute inset-0 z-10 auth-hero-gradient mix-blend-multiply"></div>
+<!-- Hero Content -->
+<div class="relative z-20 text-on-primary flex flex-col items-center">
+<span class="material-symbols-outlined text-[64px] mb-sm" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
+<h1 class="font-display-lg text-display-lg font-bold mb-sm tracking-tight">Quiniela Mundial 2026</h1>
+<p class="font-body-lg text-body-lg max-w-sm opacity-90 hidden md:block">
+                    Join the ultimate predictor tournament. Track real-time odds, compete globally, and secure your spot on the leaderboard.
+                </p>
+</div>
+</section>
+<!-- Auth Form Section (Right on Desktop, Bottom on Mobile) -->
+<section class="w-full md:w-1/2 h-full flex flex-col p-md md:p-xl bg-surface relative">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant mb-lg relative">
+<button class="flex-1 pb-sm font-label-bold text-label-bold text-primary border-b-2 border-primary transition-colors hover:text-primary" id="tab-login">
+                    Login
+                </button>
+<button class="flex-1 pb-sm font-label-bold text-label-bold text-on-surface-variant transition-colors hover:text-primary" id="tab-register">
+                    Register
+                </button>
+</div>
+<!-- Error Message (Hidden by default) -->
+<div class="hidden mb-md p-sm bg-error-container text-on-error-container border border-error rounded-lg flex items-start gap-sm" id="error-message">
+<span class="material-symbols-outlined mt-1" style="font-variation-settings: 'FILL' 1;">error</span>
+<div>
+<strong class="font-label-bold text-label-bold block mb-1">Account Inactive</strong>
+<span class="font-body-sm text-body-sm">Your account has been deactivated due to prolonged inactivity or policy violation. Please contact support.</span>
+</div>
+</div>
+<!-- Login Form -->
+<div class="tab-content active flex-1 flex flex-col" id="form-login">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-xs">Welcome Back</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enter your credentials to access the dashboard.</p>
+</div>
+<form class="flex flex-col gap-md flex-1">
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface mb-base" for="login-email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-[40px] pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container font-body-md text-body-md text-on-surface transition-all" id="login-email" placeholder="name@company.com" required="" type="email">
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-base">
+<label class="block font-label-bold text-label-bold text-on-surface" for="login-password">Password</label>
+<a class="font-label-bold text-label-bold text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-[40px] pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container font-body-md text-body-md text-on-surface transition-all" id="login-password" placeholder="••••••••" required="" type="password">
+</div>
+</div>
+<button class="mt-md w-full py-sm px-md bg-secondary-container text-on-secondary-fixed-variant font-label-bold text-label-bold rounded-lg hover:bg-secondary-fixed-dim transition-colors shadow-sm flex items-center justify-center gap-xs" onclick="showError()" type="button">
+<span>Sign In to Dashboard</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Register Form -->
+<div class="tab-content flex-1 flex flex-col" id="form-register">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-xs">Create Account</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Join the global predictor pool.</p>
+</div>
+<form class="flex flex-col gap-md flex-1">
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface mb-base" for="reg-name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">person</span>
+<input class="w-full pl-[40px] pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container font-body-md text-body-md text-on-surface transition-all" id="reg-name" placeholder="John Doe" required="" type="text">
+</div>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface mb-base" for="reg-email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-[40px] pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container font-body-md text-body-md text-on-surface transition-all" id="reg-email" placeholder="name@company.com" required="" type="email">
+</div>
+</div>
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface mb-base" for="reg-password">Secure Password</label>
+<div class="relative mb-xs">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-[40px] pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container font-body-md text-body-md text-on-surface transition-all" id="reg-password" pattern="^(?=.*[A-Z])(?=.*\d).{10,}$" placeholder="Min 10 chars, 1 uppercase, 1 number" required="" title="Must contain at least 10 characters, one uppercase letter, and one number." type="password">
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant flex gap-sm">
+<li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px]">check_circle</span> 10+ Chars</li>
+<li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px]">check_circle</span> 1 Uppercase</li>
+<li class="flex items-center gap-base"><span class="material-symbols-outlined text-[14px]">check_circle</span> 1 Number</li>
+</ul>
+</div>
+<button class="mt-md w-full py-sm px-md bg-primary-container text-on-primary font-label-bold text-label-bold rounded-lg hover:bg-primary transition-colors shadow-sm" type="submit">
+                        Create Account
+                    </button>
+<p class="text-center font-body-sm text-body-sm text-on-surface-variant mt-sm">
+                        By registering, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> &amp; <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                    </p>
+</form>
+</div>
+<!-- Shared Footer Branding -->
+<div class="mt-auto pt-lg text-center font-label-bold text-label-bold text-outline">
+                © 2026 Mundial Predictor. All rights reserved.
+            </div>
+</section>
+</main>
+<script>
+        // Simple Tab Switching Logic
+        const tabLoginBtn = document.getElementById('tab-login');
+        const tabRegisterBtn = document.getElementById('tab-register');
+        const formLogin = document.getElementById('form-login');
+        const formRegister = document.getElementById('form-register');
+        const errorMessage = document.getElementById('error-message');
+
+        const activeTabClass = ['text-primary', 'border-b-2', 'border-primary'];
+        const inactiveTabClass = ['text-on-surface-variant'];
+
+        function switchTab(tab) {
+            // Hide error on tab switch
+            errorMessage.classList.add('hidden');
+
+            if (tab === 'login') {
+                formLogin.classList.add('active');
+                formRegister.classList.remove('active');
+                
+                tabLoginBtn.classList.add(...activeTabClass);
+                tabLoginBtn.classList.remove(...inactiveTabClass);
+                
+                tabRegisterBtn.classList.add(...inactiveTabClass);
+                tabRegisterBtn.classList.remove(...activeTabClass);
+            } else {
+                formRegister.classList.add('active');
+                formLogin.classList.remove('active');
+                
+                tabRegisterBtn.classList.add(...activeTabClass);
+                tabRegisterBtn.classList.remove(...inactiveTabClass);
+                
+                tabLoginBtn.classList.add(...inactiveTabClass);
+                tabLoginBtn.classList.remove(...activeTabClass);
+            }
+        }
+
+        tabLoginBtn.addEventListener('click', () => switchTab('login'));
+        tabRegisterBtn.addEventListener('click', () => switchTab('register'));
+
+        // Demonstrate Error State
+        function showError() {
+            errorMessage.classList.remove('hidden');
+            // Shake effect for visual feedback
+            errorMessage.animate([
+                { transform: 'translateX(0)' },
+                { transform: 'translateX(-5px)' },
+                { transform: 'translateX(5px)' },
+                { transform: 'translateX(0)' }
+            ], { duration: 300, iterations: 2 });
+        }
+    </script>
+</body></html>

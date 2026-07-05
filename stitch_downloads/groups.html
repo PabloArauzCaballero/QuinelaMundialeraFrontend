@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Quiniela Mundial 2026 - Groups</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#b8c4ff",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-surface-variant": "#444653",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#a8b8ff",
+                        "background": "#f8f9fb",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#f9bd22",
+                        "primary-fixed": "#dde1ff",
+                        "surface": "#f8f9fb",
+                        "secondary-container": "#ffc329",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary-fixed": "#261a00",
+                        "surface-container-high": "#e7e8ea",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-low": "#f3f4f6",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-container": "#1e40af",
+                        "tertiary": "#003d27",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#795900",
+                        "tertiary-container": "#00563a",
+                        "on-primary-fixed-variant": "#173bab",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-tertiary-container": "#3fd298",
+                        "surface-variant": "#e1e2e4",
+                        "surface-tint": "#3755c3",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error": "#ffffff",
+                        "primary": "#00288e",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#edeef0",
+                        "surface-dim": "#d9dadc",
+                        "surface-bright": "#f8f9fb",
+                        "on-background": "#191c1e",
+                        "on-surface": "#191c1e",
+                        "outline": "#757684",
+                        "on-secondary-container": "#6f5100",
+                        "secondary-fixed": "#ffdf9f"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "xl": "64px",
+                        "container-max": "1280px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "gutter": "20px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Archivo Narrow"],
+                        "headline-lg-mobile": ["Archivo Narrow"],
+                        "body-md": ["Inter"],
+                        "stat-value": ["Archivo Narrow"],
+                        "display-lg": ["Archivo Narrow"],
+                        "headline-md": ["Archivo Narrow"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "stat-value": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for inner lists */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #c4c5d5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden flex h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-sm md:px-md h-16 bg-surface border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-sm">
+<!-- Mobile Menu Toggle (Decorative for this scope) -->
+<button class="lg:hidden text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md lg:text-headline-md font-headline-lg-mobile font-bold text-primary">Quiniela Mundial 2026</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-xs opacity-80 duration-150 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-xs opacity-80 duration-150 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-xs">
+<img alt="User profile with tournament points and ranking" class="w-full h-full object-cover" data-alt="A close up, high quality profile picture of a young professional football fan wearing a team jersey, bright studio lighting, neutral background, modern avatar style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7-CU35chF0wru9JOXpY0XsnrBS73jMSSJtpO2bjz-Ax6C9JZp1AxM8W9n6z7dFYsqwwkll1CBd56FPwVlGJj14icOf9KMtQRrtzKY_lNx0kNi0wgFVn_iUuqBePlczaFeqGRn9zxl5B1ajvIOX-0_TH0pPKFM3klk2K-VIqCIp23mekoYKzFmUObnbvXoQVDJ0j9qMNg1EuNS5n9ohdfRCw4aWFHwojLOC0VgofILAz4Jf3NFg3hQ-FcSfSRX1WNlWDqxu8ifh1GN">
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-16 bottom-0 w-64 p-sm overflow-y-auto bg-surface-container-low border-r border-outline-variant flat no shadows z-40">
+<div class="flex flex-col items-center mb-lg mt-md">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-xs border-2 border-primary">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A close up, high quality profile picture of a young professional football fan wearing a team jersey, bright studio lighting, neutral background, modern avatar style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1FeVTQ-01-pm-_Ig8f5phIGtOXBK1LEhZVXuIhoKHuJhDnOJy1i6ErOp4Kyt5gp53EBHhakEMROP-fbokeEL8EVScFRk3W6ZNVJEACw4iRclT9jlXVj3TJm5u-g-aYJu9dN8v3WDHv3DknexMnQHOrGR_9cLWEdYnPt_LalI52akA4P-xSeUr7jCEd5pIXOd-L_2t7SytIlWTZ_Fy6h_-Jp_Rbyywqs9xTBFrfVzqDv_Qxd6oHrmwCy24aFuw9PX-YaceWi8zTpkN">
+</div>
+<h2 class="font-headline-md text-headline-md text-primary text-center">Tournament Hub</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">FIFA World Cup 2026</p>
+</div>
+<div class="flex-1 flex flex-col gap-base">
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-label-bold text-label-bold uppercase">Dashboard</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">calendar_today</span>
+<span class="font-label-bold text-label-bold uppercase">Fixture</span>
+</a>
+<!-- Active -->
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-full scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-bold text-label-bold uppercase">Groups</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">history</span>
+<span class="font-label-bold text-label-bold uppercase">History</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">map</span>
+<span class="font-label-bold text-label-bold uppercase">Map</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-base pt-md border-t border-outline-variant">
+<button class="w-full bg-secondary-container text-on-secondary-fixed-variant font-label-bold text-label-bold uppercase py-sm rounded-full mb-md shadow-sm hover:opacity-90 transition-opacity">
+                Place Prediction
+            </button>
+<a class="flex items-center gap-md px-md py-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all text-body-sm font-body-sm" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-md px-md py-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all text-body-sm font-body-sm" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 lg:ml-64 bg-surface-bright overflow-y-auto w-full">
+<div class="p-md lg:p-lg max-w-container-max mx-auto h-full flex flex-col lg:flex-row gap-lg">
+<!-- Left Column: Actions & List (4 cols) -->
+<aside class="w-full lg:w-4/12 flex flex-col gap-md">
+<!-- Bento Actions: Create & Join -->
+<div class="grid grid-cols-2 gap-sm">
+<!-- Join Group Action -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity"></div>
+<div class="flex items-center justify-between mb-sm relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Join Group</h3>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-xs rounded-full">login</span>
+</div>
+<div class="relative z-10 flex gap-xs">
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-sm py-xs font-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all uppercase placeholder:normal-case" placeholder="6-char code" type="text">
+<button class="bg-primary text-on-primary rounded-lg px-sm py-xs font-label-bold text-label-bold hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                                JOIN
+                            </button>
+</div>
+</div>
+<!-- Create Group Action -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-secondary-container opacity-0 group-hover:opacity-10 transition-opacity"></div>
+<div class="flex items-center justify-between mb-sm relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Create Group</h3>
+<span class="material-symbols-outlined text-on-secondary-fixed-variant bg-secondary-fixed p-xs rounded-full">add_circle</span>
+</div>
+<div class="relative z-10 flex gap-xs">
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-sm py-xs font-body-md text-on-surface focus:border-secondary-container focus:ring-1 focus:ring-secondary-container outline-none transition-all" placeholder="Group Name" type="text">
+<button class="bg-secondary-container text-on-secondary-fixed-variant rounded-lg px-sm py-xs font-label-bold text-label-bold hover:opacity-90 transition-opacity">
+                                NEW
+                            </button>
+</div>
+</div>
+</div>
+<!-- Active Groups List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex-1 flex flex-col overflow-hidden">
+<div class="p-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">My Active Groups</h3>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold px-xs py-base rounded-full">3</span>
+</div>
+<div class="overflow-y-auto custom-scrollbar flex-1 p-sm flex flex-col gap-xs">
+<!-- Group Card (Active/Selected) -->
+<div class="bg-primary-fixed border border-primary text-on-primary-fixed rounded-lg p-sm cursor-pointer shadow-sm relative overflow-hidden">
+<div class="absolute right-0 top-0 h-full w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-label-bold text-label-bold text-base uppercase tracking-wide">Global Tech Division</h4>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex -space-x-2">
+<img alt="Member" class="w-6 h-6 rounded-full border border-primary-fixed object-cover" data-alt="Small round avatar image of a casually dressed person, well lit, neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_GrOTdX-9fwKGlaLg2rz1wjOCOejFSbFtflq195GpXxPrt1oqRoOOJPKg1bgAdTHiQzIAcuA11z7aRFrkYA5qtW6V10pPVjig1Q-aaPgWqKuPebM337iBMF57jpWpXH0qIZhz5G8h8IMQxOW8Eyl7-gbcO2A3G7k-f7k-4fwF4Nu3Ks0yrHJ45XB2iXux_fb0ewgsvUhqpMKFOqUJlwqPkQ6Az46IuIOy9-kNSDIv4aaYefLqv2euSjJW7H0BxF0O4EZ1954kMFPo">
+<img alt="Member" class="w-6 h-6 rounded-full border border-primary-fixed object-cover" data-alt="Small round avatar image of a casually dressed person, well lit, neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIllklghDEXDAcaARdUOH1DNRtQRPfH2z1AGBE84QjDAT_TueGwC5uQrND1wydpzk2DxDv6HRoeWZ4klHQvMTbnuji83QCcRcPKD1ncwgmXcTR7Z-O6fiWGhjdrvFfpxaZSE3O8Vq3OY8PTY2FLyn4jiZoDZVHHIK-KMi9T0pK9Expd3l2SdWWxiJvW8AowmXZZepc_YxKZjCuZtjN0t3K7RKvDg1LrLTYurgSp7EKke996GLzch1ebWVLii_aLALboUuNdBSB8qtO">
+<img alt="Member" class="w-6 h-6 rounded-full border border-primary-fixed object-cover" data-alt="Small round avatar image of a casually dressed person, well lit, neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0X2QcAVc8jG8GYaQqqU8gbUIp99IJBdHIlTdtzIZIMmJV3j305JbKedAIQStP1xNK-vx43Qn4VWvqJDXhCIRQp4n7-Vd4BuPSFUUKW0Qebll8CQ3W6Frrs34aidkKXUDGqchCUs8CkjKwVjATYPeTwrSwRi5jRt7Htah2ADpW2OWLKw23eOluqVYBySCetPz-CVN26n8YVTrdD-DW5gG1K31JtyDh_Enfwaw4F-rioYW_QkX9C0ujkO6Y7OS5SKtG0V9y61zRW9qH">
+<div class="w-6 h-6 rounded-full border border-primary-fixed bg-surface text-on-surface-variant flex items-center justify-center font-label-bold text-[10px]">+24</div>
+</div>
+<span class="font-body-sm text-body-sm opacity-80">Rank: 4th</span>
+</div>
+</div>
+<!-- Group Card (Inactive) -->
+<div class="bg-surface border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors rounded-lg p-sm cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-label-bold text-label-bold text-base uppercase tracking-wide">Family &amp; Friends</h4>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex -space-x-2">
+<img alt="Member" class="w-6 h-6 rounded-full border border-surface object-cover" data-alt="Small round avatar image of an older person smiling, bright lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXuP4nZepZFTP5lI9qwCSrpH9JrOHUzl-_GVIdPYtZnohJT8zllpK1uVNdIesuCYM6I1AZnbzZTde_SNodFFO7ie-tKJmReGN8S3n4zZT25cht_DeOpYSnk90zlVI4WlS_shne2v9uSsnit7DlprQvP4hNayGdqDe2yfKxpTB0U25esE6zPF2n8TkfuJ58a_ENqqLrUr8bDKoBp79MZPoPlRcgezxgses9ujm_eZyNzSbdakzPIaJbUS4u88mVbgNLjyQXfXCTz9w1">
+<img alt="Member" class="w-6 h-6 rounded-full border border-surface object-cover" data-alt="Small round avatar image of a young adult, casual attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnaA-HedlHd4gTUsGj6TM9LCEaH6qgMcSmhneE_UUSKBCr27CPpc-5Ki-icEqJYRIKK92T0JETc-ZmnQK_DJcG3DjHusNSpCGWPSzYLmgvWo9AfWC39PVeAENUICnZS_ipjggg-kf1ibF4uD4Zhd8xWQgg_-xcH1fzDKeqHDX31Nl9MJIyFCeXn_5hoKl54OC9S94gP3Og7pxJo-UpjR2st_Nj6_QYIenJsBpRK8QYhxsYkdbXVVZtNvAx88aufVrEnVE3-6saUvm4">
+<div class="w-6 h-6 rounded-full border border-surface bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-bold text-[10px]">+8</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rank: 1st</span>
+</div>
+</div>
+<!-- Group Card (Inactive) -->
+<div class="bg-surface border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors rounded-lg p-sm cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-label-bold text-label-bold text-base uppercase tracking-wide">Office Pool '26</h4>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex -space-x-2">
+<img alt="Member" class="w-6 h-6 rounded-full border border-surface object-cover" data-alt="Small round avatar of a man in a business shirt, professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2kq4nKaX-zDWU4-3AmlHAVDGYeqGCGtz-DqhdU5yRjmHnL3B1lgNaIbxE7qAbEzOfpR1GjAmw_32tBbyJeFKZ_RlwZcO3OFuWSEvs_w2xFmagWNxQKTQBHLSGbtRN6BEkTzbwN3XNBOME2OL8NkjozTrw_-N7M0Op5uKLXoCqZp69SADurlubBSqB3332tM0NDfOYIVVwJMm9klfVXJInv2DeIGrw-Ptppp3tl_UXeaxTs9OGuOHSHJnQBydW04vITMNA8P6ZtKtL">
+<div class="w-6 h-6 rounded-full border border-surface bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-bold text-[10px]">+42</div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rank: 12th</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Column: Group Detail (8 cols) -->
+<section class="w-full lg:w-8/12 flex flex-col gap-md">
+<!-- Group Header / Owner Actions -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-lg relative overflow-hidden">
+<!-- Decorative Graphic Background -->
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none" data-alt="Subtle, abstract geometric pattern resembling a soccer net and stadium lights, in monochrome grey, acting as a soft background texture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSyLVhDA47aFKrYAnE78MAbsQV7PGFzUar8yK1FBpCahNcwGxK5aUN25oUSUZOtQ3k6wUKgCrVi8D02_VXRAKw7dK9pEXd-b56NxFI7rLXCRuz76UaEBh7P3YERO7Q2T_Zuqgw2YsR12Kzgq9r1jS4keI2oTXMZ3THkxaYnUetVKzgUEwGtDfhOmTmwVxeHRyIUU0HKqDXcwwBFqjjvi46oekkPixUIELIRaXfEUgu4MU_UOXvwfHZNfY_rIqj4QZ4ml71z4h2r1w2')"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant font-label-bold text-[10px] uppercase px-xs py-base rounded">Owner</span>
+<span class="text-on-surface-variant text-sm flex items-center gap-base">
+<span class="w-2 h-2 rounded-full bg-[#10B981]"></span> 27 Active Members
+                                </span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-xs">Global Tech Division</h2>
+<p class="font-body-md text-on-surface-variant max-w-md">Private group for tech department employees to predict the 2026 World Cup outcomes.</p>
+</div>
+<!-- Invitation Code Block -->
+<div class="bg-surface border border-outline-variant rounded-lg p-sm flex items-center gap-md shadow-sm">
+<div>
+<span class="font-label-bold text-label-bold text-on-surface-variant block mb-base uppercase text-[10px]">Invite Code</span>
+<span class="font-stat-value text-stat-value text-primary tracking-widest">X7K-9P2</span>
+</div>
+<button class="bg-surface-container-high hover:bg-outline-variant text-on-surface transition-colors p-xs rounded flex items-center justify-center" title="Copy Code">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Leaderboard & Members Split -->
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex flex-col overflow-hidden">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant bg-surface">
+<button class="px-md py-sm font-label-bold text-label-bold uppercase text-primary border-b-2 border-primary bg-primary-fixed/20 transition-colors">
+                            Leaderboard
+                        </button>
+<button class="px-md py-sm font-label-bold text-label-bold uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+                            Members <span class="bg-surface-container-high px-xs rounded text-[10px]">Active</span>
+</button>
+</div>
+<!-- Leaderboard Table -->
+<div class="flex-1 overflow-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low sticky top-0 z-10">
+<tr>
+<th class="py-sm px-md font-label-bold text-label-bold text-on-surface-variant uppercase w-16">Pos</th>
+<th class="py-sm px-md font-label-bold text-label-bold text-on-surface-variant uppercase">Name</th>
+<th class="py-sm px-md font-label-bold text-label-bold text-on-surface-variant uppercase text-center w-24">Bets</th>
+<th class="py-sm px-md font-label-bold text-label-bold text-on-surface-variant uppercase text-right w-32">Total Pts</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-lowest transition-colors">
+<td class="py-sm px-md font-stat-value text-on-surface-variant">1</td>
+<td class="py-sm px-md flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Avatar of a smiling woman with dark hair." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKCKU2AQ2yYHBmmO-u4Mt8Jk-Hby528CwQQh-JiXU9PdosynnqLgMGkMgNMket28KD5OtTwWUeEgXm61AcRoXBbdKMj5uWvgOH48Uvday7yd4LaArfOKeWMxfhDKjYOb3J-g7G57jEQW9eQ4CF3syjVucQkOdMEMvZ2wGqVFwja9TxtMtTacQWEXBUvCT4jwdXy2yjBs7UwGGEIlwavN7Ia6VNf6JuEllG8-Kh7tqNbJtnqGNP4bahYz6es3wVQokfev0tKtf1S9IS">
+<span class="font-semibold">Sarah Jenkins</span>
+</td>
+<td class="py-sm px-md text-center">48</td>
+<td class="py-sm px-md text-right font-stat-value text-primary">1,240</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-lowest transition-colors">
+<td class="py-sm px-md font-stat-value text-on-surface-variant">2</td>
+<td class="py-sm px-md flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Avatar of a man with glasses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCLYMNGuRjfnMNrEe4YjXJ8W7Srkn0OYsWI85tMQOaofGBMgef3GjSb2hmNfMEC0HL07rO7PynLhwGSzV7LDNIi5FsrCFmDYL34Rvm5OctfNGJ_1J7So96MMjfD1pI60b-Ftz6dXd1qaZ2R3KkIx-90erkPLUQLPzqeElrhdJszMD7-tKOicSinrzUPT4_V0djCy2IZDcOhlzMNp8et0XF0uhC0Qq6RSuWJpfvG1BHSpdOs9C_e5jhSw2v4EaD9TnR9lxMO1V77GDg">
+<span>David Chen</span>
+</td>
+<td class="py-sm px-md text-center">45</td>
+<td class="py-sm px-md text-right font-stat-value text-on-surface">1,180</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-lowest transition-colors">
+<td class="py-sm px-md font-stat-value text-on-surface-variant">3</td>
+<td class="py-sm px-md flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Avatar of a young person in a hoodie." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoczhnKKWeL4oAB-78l42G5mxbICQmaD11MthyBR5mV3R4kTSqVuQVnnA_Dps6z4HUQQAJMZlG7Xx1dQ5lywPdckJXvNlgiKDuxvXcxr5kJ5UtBs6dImXi-iDcEgA35phn7sMB3AgW0CqBIqF7KA5CoWREjLpaPFFpI8Qf6oUFgd41DW1jCg2S2lN_lBlcr56JEfybs6COiTI4SGAIK0eZiGPZbdp69NSPZRoovAgHcriZD7Drj-vkrjXAhzJo_0SgANy6juscs6ny">
+<span>Alex Rodriguez</span>
+</td>
+<td class="py-sm px-md text-center">48</td>
+<td class="py-sm px-md text-right font-stat-value text-on-surface">1,155</td>
+</tr>
+<!-- Row 4 (Current User - Highlighted) -->
+<tr class="bg-primary-fixed border-l-4 border-l-primary hover:bg-primary-fixed-dim transition-colors">
+<td class="py-sm px-md font-stat-value text-primary">4</td>
+<td class="py-sm px-md flex items-center gap-sm">
+<div class="relative">
+<img class="w-8 h-8 rounded-full border-2 border-primary object-cover" data-alt="A close up, high quality profile picture of a young professional football fan wearing a team jersey, bright studio lighting, neutral background, modern avatar style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIv74G-XfTFFfqYx6YHkm1WI8EUQB_QthILZT3fXNIp8GzPi7uB4fA4-wu6yyMnEoqmUq5CB35wedP8vFzGhkAtz63RkDhcrrEhnZqOSgiwuxQgmL1wyngJMVq8TPZGYdQD2izPFmuT8uZm145kB-hoAmhkv_MfxPZr5WyFBYiCLSdq6hhB2BUgSnM4OeHshfFR3ZgFdRkWip4ZTtRWUEhk1c6GanO6gyh4VqYLtXxv2ADmwdnXYFo6m2ZZm8z55Ha5m3lZJeTH-25">
+<span class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-container text-[8px] font-bold px-1 rounded">YOU</span>
+</div>
+<span class="font-bold text-on-primary-fixed">Your Profile</span>
+</td>
+<td class="py-sm px-md text-center font-semibold text-on-primary-fixed">42</td>
+<td class="py-sm px-md text-right font-stat-value text-primary">1,090</td>
+</tr>
+<!-- Row 5 -->
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-lowest transition-colors">
+<td class="py-sm px-md font-stat-value text-on-surface-variant">5</td>
+<td class="py-sm px-md flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-bold">MJ</div>
+<span>Michael Jordan</span>
+</td>
+<td class="py-sm px-md text-center">30</td>
+<td class="py-sm px-md text-right font-stat-value text-on-surface">840</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-sm px-md font-stat-value text-on-surface-variant">6</td>
+<td class="py-sm px-md flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Avatar of a woman with red hair." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-hqpRXd97CowRxkDflzMUw_9vsi_x5cOms1YjdZQnp3H9E2XsaUmdg9bCyFTKAdEoW5-uby1fMQwtRQ1SboWUdixnfhPgQXExcQvyYSwyZh-Q0nJ6zuL10GtObKqaiAe6v3_GSays8V_IM1O9_X_HDfe3MbRYyzrGhTZzFcZjoCWf_6POIKy_lne96dz9a3QGW2190hG9HHlExOR90lVA0ulBWg5AQhgeIh4IX7ySlztjwRL4xycHfTIJ5ay56zlur0Uf-IWXwRIk">
+<span>Emma Watson</span>
+</td>
+<td class="py-sm px-md text-center">25</td>
+<td class="py-sm px-md text-right font-stat-value text-on-surface">620</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

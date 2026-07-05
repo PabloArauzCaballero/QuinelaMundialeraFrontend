@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Admin Panel - Quiniela Mundial 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b8c4ff",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-surface-variant": "#444653",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#a8b8ff",
+                        "background": "#f8f9fb",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#f9bd22",
+                        "primary-fixed": "#dde1ff",
+                        "surface": "#f8f9fb",
+                        "secondary-container": "#ffc329",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary-fixed": "#261a00",
+                        "surface-container-high": "#e7e8ea",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-low": "#f3f4f6",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-container": "#1e40af",
+                        "tertiary": "#003d27",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#795900",
+                        "tertiary-container": "#00563a",
+                        "on-primary-fixed-variant": "#173bab",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-tertiary-container": "#3fd298",
+                        "surface-variant": "#e1e2e4",
+                        "surface-tint": "#3755c3",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error": "#ffffff",
+                        "primary": "#00288e",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "outline-variant": "#c4c5d5",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#edeef0",
+                        "surface-dim": "#d9dadc",
+                        "surface-bright": "#f8f9fb",
+                        "on-background": "#191c1e",
+                        "on-surface": "#191c1e",
+                        "outline": "#757684",
+                        "on-secondary-container": "#6f5100",
+                        "secondary-fixed": "#ffdf9f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "container-max": "1280px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "gutter": "20px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Archivo Narrow"],
+                        "headline-lg-mobile": ["Archivo Narrow"],
+                        "body-md": ["Inter"],
+                        "stat-value": ["Archivo Narrow"],
+                        "display-lg": ["Archivo Narrow"],
+                        "headline-md": ["Archivo Narrow"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "stat-value": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar (Semantic Shell - No BottomNavBar/SideNavBar as this is a focused admin journey) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-sm md:px-md h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">admin_panel_settings</span>
+<span class="font-headline-md text-headline-md text-primary dark:text-secondary-fixed">Quiniela Mundial 2026 - Admin</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a diverse professional user wearing a smart business casual outfit, styled as a polished corporate headshot for an enterprise dashboard. High-key lighting against a pristine white background. The image should convey authority and reliability suitable for an administrator." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC35VvX0X71XkmzSxJL90K8YNmFtJDReqonB2efk7D5Mj0VcnvcLJwbeJ9ljYaoub-nN3ZXlu2diCY0Og156azSL4nz4QJl_Krn2mF2-mQwfc-aoRKzzDAm_9o8MOBlabxuRsVShItwu2aUi9NIfU-LhaNttGO4n_cHxViLYfmoZxTyzzOneHmaK10EQT5YnT-FxdUlx1FKV1UnwhWGHInPm5mTvYOqkH9LZrHFbMCOrqGRWUXiyZXmWG_duZ4mTKlFh0t2YUsBYdgl">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-sm md:px-md lg:px-lg pt-24 pb-lg mt-16 grid grid-cols-1 lg:grid-cols-12 gap-md md:gap-gutter">
+<!-- Left Column: Forms and Sync -->
+<div class="lg:col-span-7 flex flex-col gap-md">
+<!-- Register Match Form -->
+<section class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-sm">
+<div class="flex items-center gap-xs mb-md border-b border-surface-variant pb-xs">
+<span class="material-symbols-outlined text-primary">add_circle</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Register New Match</h2>
+</div>
+<form class="flex flex-col gap-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Home Team</label>
+<select class="form-select w-full rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring focus:ring-primary-container focus:ring-opacity-50">
+<option>Select Team</option>
+<option>Argentina</option>
+<option>Brazil</option>
+<option>France</option>
+<option>England</option>
+</select>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Away Team</label>
+<select class="form-select w-full rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring focus:ring-primary-container focus:ring-opacity-50">
+<option>Select Team</option>
+<option>Germany</option>
+<option>Spain</option>
+<option>Portugal</option>
+<option>Italy</option>
+</select>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-error mt-[-4px] hidden" id="validationHint">Teams cannot be the same.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Stadium</label>
+<select class="form-select w-full rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring focus:ring-primary-container focus:ring-opacity-50">
+<option>Estadio Azteca, Mexico</option>
+<option>MetLife Stadium, USA</option>
+<option>BMO Field, Canada</option>
+</select>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Phase</label>
+<select class="form-select w-full rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring focus:ring-primary-container focus:ring-opacity-50">
+<option>Group Stage</option>
+<option>Round of 32</option>
+<option>Round of 16</option>
+<option>Quarter-Finals</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-base w-full md:w-1/2">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Date &amp; Time</label>
+<input class="form-input w-full rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring focus:ring-primary-container focus:ring-opacity-50" type="datetime-local">
+</div>
+<div class="flex justify-end mt-sm">
+<button class="bg-secondary-container text-on-secondary-fixed font-label-bold text-label-bold px-md py-xs rounded-lg hover:bg-secondary-fixed transition-colors" type="button">
+                            Register Match
+                        </button>
+</div>
+</form>
+</section>
+<!-- Sync Console -->
+<section class="bg-surface-container-low border border-surface-variant rounded-xl p-md shadow-sm relative overflow-hidden">
+<!-- Abstract tech background for sync -->
+<div class="absolute inset-0 bg-cover bg-center opacity-10 z-0" data-alt="A highly detailed, abstract representation of a data synchronization process suitable for an enterprise administration panel. Think glowing blue data streams connecting nodes on a dark grey background. The style should be modern, technical, and broadcast-grade, conveying high speed and precision." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCv6XEUvCmu0NIsZKAPOXyB4uAMXu1D6YVVabY2x0wnrQk7p1dM25fNpmqctzNa2hClueBmSckX32UNhhtIUbJMIfDGwLJjs5GimLF0abHThblFmdp6TvSKZ_p-9-pe2h09poLPni_4kwmw-KsKnKugSifD9nAmSg9fMJ7hZ_K_4zRU62nNsFRPiLH6_3S2v6fgJbAE2dfauglRO7ZzuZkkT9o28ghcsM5V4JRMPCyARODZx0iTiiiAEIMGrcejSR3lRsgKgHQpgvj8')"></div>
+<div class="relative z-10 flex flex-col items-center justify-center py-md gap-sm">
+<div class="flex items-center gap-xs text-primary mb-xs">
+<span class="material-symbols-outlined">sync</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Data Synchronization</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center max-w-md">
+                        Manually trigger a sync with the global FIFA API to update match scores and status across all pools.
+                    </p>
+<button class="mt-sm bg-primary text-on-primary font-label-bold text-label-bold px-lg py-sm rounded-lg hover:bg-primary-container transition-all flex items-center gap-xs group" id="syncBtn">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500" id="syncIcon">bolt</span>
+<span>POST /api/v1/admin/sync/run</span>
+</button>
+<!-- Fake Loading State -->
+<div class="w-full max-w-sm mt-sm hidden" id="syncProgress">
+<div class="flex justify-between font-label-bold text-label-bold text-on-surface-variant mb-base">
+<span>Syncing...</span>
+<span>45%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full w-[45%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Edit Match List -->
+<div class="lg:col-span-5 flex flex-col">
+<section class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md shadow-sm h-full flex flex-col">
+<div class="flex items-center justify-between mb-md border-b border-surface-variant pb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">edit_calendar</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Scheduled Matches</h2>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+<div class="flex flex-col gap-xs flex-1 overflow-y-auto pr-xs">
+<!-- Match Item 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-sm flex flex-col gap-xs hover:shadow-sm transition-shadow">
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-secondary bg-secondary-fixed px-xs py-base rounded">Group A</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Jun 11, 2026 - 15:00</span>
+</div>
+<div class="flex items-center justify-between font-body-md text-body-md font-bold">
+<span>Mexico</span>
+<span class="text-on-surface-variant font-normal text-sm">VS</span>
+<span>Poland</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-[4px]">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Estadio Azteca
+                        </div>
+<div class="flex justify-end gap-xs mt-xs pt-xs border-t border-surface-variant">
+<button class="text-primary hover:text-primary-container font-label-bold text-label-bold uppercase text-xs flex items-center gap-[4px]">
+<span class="material-symbols-outlined text-[16px]">schedule</span> Reschedule
+                            </button>
+<button class="text-primary hover:text-primary-container font-label-bold text-label-bold uppercase text-xs flex items-center gap-[4px]">
+<span class="material-symbols-outlined text-[16px]">map</span> Venue
+                            </button>
+</div>
+</div>
+<!-- Match Item 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-sm flex flex-col gap-xs hover:shadow-sm transition-shadow">
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-secondary bg-secondary-fixed px-xs py-base rounded">Group B</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Jun 12, 2026 - 18:00</span>
+</div>
+<div class="flex items-center justify-between font-body-md text-body-md font-bold">
+<span>England</span>
+<span class="text-on-surface-variant font-normal text-sm">VS</span>
+<span>USA</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-[4px]">
+<span class="material-symbols-outlined text-[16px]">location_on</span> MetLife Stadium
+                        </div>
+<div class="flex justify-end gap-xs mt-xs pt-xs border-t border-surface-variant">
+<button class="text-primary hover:text-primary-container font-label-bold text-label-bold uppercase text-xs flex items-center gap-[4px]">
+<span class="material-symbols-outlined text-[16px]">schedule</span> Reschedule
+                            </button>
+<button class="text-primary hover:text-primary-container font-label-bold text-label-bold uppercase text-xs flex items-center gap-[4px]">
+<span class="material-symbols-outlined text-[16px]">map</span> Venue
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-md px-sm mt-auto flex flex-col md:flex-row justify-between items-center gap-xs bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant dark:border-on-surface-variant">
+<div class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline-variant">
+            © 2026 Mundial Predictor. All rights reserved.
+        </div>
+<div class="flex gap-md">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-opacity duration-200" href="#">Contact Support</a>
+</div>
+</footer>
+<script>
+        // Simple interactions for demonstration
+        document.getElementById('syncBtn').addEventListener('click', function() {
+            const btn = this;
+            const progress = document.getElementById('syncProgress');
+            const icon = document.getElementById('syncIcon');
+            
+            icon.classList.add('animate-spin');
+            progress.classList.remove('hidden');
+            
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                progress.classList.add('hidden');
+                // Could change text to 'Sync Complete' temporarily
+            }, 2000);
+        });
+
+        // Basic validation hint logic (just visual toggle for now)
+        const selects = document.querySelectorAll('.form-select');
+        selects.forEach(select => {
+            select.addEventListener('change', () => {
+                // In a real app, compare home and away values
+                // document.getElementById('validationHint').classList.remove('hidden');
+            });
+        });
+    </script>
+</body></html>

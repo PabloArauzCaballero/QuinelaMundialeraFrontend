@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Quiniela Mundial 2026 - Match Prediction</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Hide number input arrows for a cleaner look */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#b8c4ff",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-surface-variant": "#444653",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#a8b8ff",
+                    "background": "#f8f9fb",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#f9bd22",
+                    "primary-fixed": "#dde1ff",
+                    "surface": "#f8f9fb",
+                    "secondary-container": "#ffc329",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "inverse-on-surface": "#f0f1f3",
+                    "on-primary-fixed": "#001453",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-container-high": "#e7e8ea",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-low": "#f3f4f6",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "primary-container": "#1e40af",
+                    "tertiary": "#003d27",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#795900",
+                    "tertiary-container": "#00563a",
+                    "on-primary-fixed-variant": "#173bab",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-tertiary-container": "#3fd298",
+                    "surface-variant": "#e1e2e4",
+                    "surface-tint": "#3755c3",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error": "#ffffff",
+                    "primary": "#00288e",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "outline-variant": "#c4c5d5",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#edeef0",
+                    "surface-dim": "#d9dadc",
+                    "surface-bright": "#f8f9fb",
+                    "on-background": "#191c1e",
+                    "on-surface": "#191c1e",
+                    "outline": "#757684",
+                    "on-secondary-container": "#6f5100",
+                    "secondary-fixed": "#ffdf9f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "container-max": "1280px",
+                    "sm": "16px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "gutter": "20px",
+                    "md": "24px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Archivo Narrow"],
+                    "headline-lg-mobile": ["Archivo Narrow"],
+                    "body-md": ["Inter"],
+                    "stat-value": ["Archivo Narrow"],
+                    "display-lg": ["Archivo Narrow"],
+                    "headline-md": ["Archivo Narrow"],
+                    "label-bold": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "stat-value": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopAppBar (From JSON - Immutable Content, Executed Styles) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-sm md:px-md h-16 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-sm">
+<span class="text-headline-md font-headline-lg-mobile font-bold text-primary dark:text-secondary-fixed">Quiniela Mundial 2026</span>
+</div>
+<div class="flex items-center gap-sm text-primary dark:text-inverse-primary">
+<button aria-label="Notifications" class="p-xs hover:text-primary dark:hover:text-secondary-fixed transition-colors opacity-80 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="Settings" class="p-xs hover:text-primary dark:hover:text-secondary-fixed transition-colors opacity-80 duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile with tournament points and ranking" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A clean, professional 3D rendered avatar icon for a user profile in a sports app, featuring subtle gold accents indicating tournament points and ranking, set against a pristine white background with high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJcMHvZX3w351eKrxKTsvk4yKTAGNjRrMqKw8vQCJ0ARUtLzW53n7NwPxNbrDA5kY4poMcjCsTGtiaYsYevo9DSWPU8TGbu4ID_C0FyK1WrLN-JYfWlnvxbAvi1EQskykHkbTJnRDt32CZGhFYE-kB2LaEWdza951jYvzGdhA___X6QnVuGbtpYxUcjsSbKx9Bofbdf_nEwmj6EodH68kQi3SkEQTyun_3mC-u7DjVFg3HTOadT0ZfQk8-EbosNYrVguLRgN22GUVk">
+</div>
+</header>
+<!-- Navigation Shell Suppressed: SPA Detail View intent requires focus on the canvas -->
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-xl px-sm md:px-gutter max-w-container-max mx-auto w-full flex flex-col items-center">
+<!-- SPA Back Action -->
+<div class="w-full max-w-4xl mb-sm">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors font-label-bold text-label-bold">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                BACK TO FIXTURE
+            </button>
+</div>
+<!-- 1. Editable Prediction State (Scheduled Match) -->
+<section class="w-full max-w-4xl bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden mb-lg flex flex-col">
+<!-- Match Header Bento -->
+<div class="relative w-full overflow-hidden bg-primary text-on-primary">
+<!-- Atmospheric Background -->
+<div class="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay" data-alt="A striking digital background representing a modern football stadium at night. High-key, dramatic broadcast lighting illuminates abstract architectural curves. The palette features deep navy blues and pristine whites, creating a highly professional, energetic sports atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYSIW5jGYuaepDg4eU1EUCA3DV0jo0QiqVbHW1_FffdHZWzpe4kN-2iltpl7909av5fEBHpflAS32hHvCnW9HnBd5xvoft_xXrcTP5ox24wvuatONmlxF9TdZUpTQXI4Rop7GGzDH13D9IkJOad8_F6qxRVZ38MKeqwBWFYhF1mfeIx_UMHlPRucviHeNbW3pQHRAkx4q-7SygHCV4IzqolOT3Htse3uqr9rRWPniQyxedACHldcSSftIZdGg86sfgM9E63j-Jfqhm')"></div>
+<div class="relative z-10 p-md md:p-lg flex flex-col items-center">
+<div class="flex items-center gap-xs mb-md bg-surface-container/20 px-sm py-xs rounded-full backdrop-blur-sm border border-on-primary/20">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wider">Group G • Matchday 1</span>
+</div>
+<div class="flex w-full justify-between items-center gap-sm md:gap-lg">
+<!-- Team Home -->
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 md:w-24 md:h-24 rounded-full border-4 border-on-primary/30 shadow-lg overflow-hidden bg-surface-container-lowest flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-quality, photorealistic 3D rendering of the national flag of Brazil, rendered as a crisp circular badge. The lighting is bright and even, suited for a professional sports broadcast graphics package. Clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmD1XUrHoYL4Cs0uCJXKk60NPPhcmnW_LUp92NDhzGxyWpJyP3qc6J3-MZyPkMn43Zs5dMQrKmeIktACplvreFI3vmpOFcWRwrPRadJBTzn1C92Jr1ayoDBoDiqGd37UqkErmbMC_IetP-UWo4o3OhM0d79WC7i5oBVG28m9PWZ6eOoWStO6hXRV40OnUePEckwOol4g8m3WUfdY5tgqAMTC40iGaccKg9YjzO5val62nWEvsqHAEtBhFkrSqUgcvLtRfll0wMaNVR">
+</div>
+<h2 class="font-headline-md text-headline-md text-center">Brazil</h2>
+</div>
+<!-- VS / Time -->
+<div class="flex flex-col items-center justify-center w-1/3">
+<span class="font-display-lg text-display-lg text-secondary-container drop-shadow-md mb-xs">VS</span>
+<div class="flex flex-col items-center text-on-primary-container">
+<span class="font-stat-value text-stat-value">20:00</span>
+<span class="font-label-bold text-label-bold uppercase">15 Jun 2026</span>
+</div>
+</div>
+<!-- Team Away -->
+<div class="flex flex-col items-center gap-sm w-1/3">
+<div class="w-16 h-16 md:w-24 md:h-24 rounded-full border-4 border-on-primary/30 shadow-lg overflow-hidden bg-surface-container-lowest flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-quality, photorealistic 3D rendering of the national flag of Switzerland, rendered as a crisp circular badge. The lighting is bright and even, suited for a professional sports broadcast graphics package. Clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGPcwc8nC9hfdJ1NUebU80Il25rr5Aj92qTeJ8DBOJBsZioB4fwJaIi6igTISJyp8CrgpRZ_MHoV_ZxJeToc5Ggmt-HwE9VSkCGx5b2opmcTF35Xbyxf7NAYh39zlqUrCvD4jLQiWX9lO9ksxvnSl6BWV3TC6Bx84nfv9Ye6O_lnIs-gV0BQ7THiABrYzx2oB9obZBXoT6XEb7WNDVCkhJJ9iTSenI5UpPriybPRSggy5YQ9WF_VE8CWiFR5UwCD7ZoziL6Fplhy2Y">
+</div>
+<h2 class="font-headline-md text-headline-md text-center">Switzerland</h2>
+</div>
+</div>
+</div>
+<!-- Bottom Info Bar -->
+<div class="relative z-10 w-full bg-surface-container-lowest/10 backdrop-blur-md border-t border-on-primary/10 py-xs px-md flex justify-between items-center font-body-sm text-body-sm text-on-primary-container">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">stadium</span>
+                        Estadio Azteca, Mexico City
+                    </div>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+                        Scheduled
+                    </div>
+</div>
+</div>
+<!-- Prediction Form (Active) -->
+<div class="p-md md:p-lg bg-surface-container-lowest">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Your Prediction</h3>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+                        Closes in 24h
+                    </span>
+</div>
+<form class="flex flex-col gap-lg">
+<div class="flex justify-center items-center gap-md md:gap-xl">
+<!-- Home Input -->
+<div class="flex flex-col items-center gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface-variant" for="home-score">BRA</label>
+<input class="w-20 h-24 md:w-24 md:h-32 text-center font-display-lg text-display-lg text-on-surface bg-surface-container border-2 border-surface-variant rounded-xl focus:border-primary focus:ring-0 focus:outline-none transition-colors shadow-inner" id="home-score" min="0" placeholder="-" type="number">
+</div>
+<span class="font-headline-lg text-headline-lg text-outline-variant">-</span>
+<!-- Away Input -->
+<div class="flex flex-col items-center gap-xs">
+<label class="font-label-bold text-label-bold text-on-surface-variant" for="away-score">SUI</label>
+<input class="w-20 h-24 md:w-24 md:h-32 text-center font-display-lg text-display-lg text-on-surface bg-surface-container border-2 border-surface-variant rounded-xl focus:border-primary focus:ring-0 focus:outline-none transition-colors shadow-inner" id="away-score" min="0" placeholder="-" type="number">
+</div>
+</div>
+<div class="flex justify-center mt-sm">
+<button class="px-xl py-sm bg-secondary-container hover:bg-secondary text-on-secondary-container hover:text-on-secondary font-label-bold text-label-bold rounded-full transition-all shadow-sm hover:shadow-md flex items-center gap-xs uppercase tracking-wider" type="button">
+<span class="material-symbols-outlined">save</span>
+                            Save Prediction
+                        </button>
+</div>
+</form>
+</div>
+</section>
+<!-- 2. Logic Visualization: Locked/Live State -->
+<div class="w-full max-w-4xl flex items-center gap-sm mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Live Match Example (Locked State)</h3>
+<div class="h-px flex-grow bg-outline-variant"></div>
+</div>
+<section class="w-full max-w-4xl bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden flex flex-col md:flex-row shadow-sm opacity-90">
+<!-- Simplified Header for Locked Match -->
+<div class="md:w-1/3 bg-surface-variant p-md flex flex-col justify-center border-b md:border-b-0 md:border-r border-outline-variant relative">
+<div class="absolute top-xs right-xs bg-error text-on-error px-2 py-1 rounded text-[10px] font-label-bold uppercase tracking-wider flex items-center gap-1 animate-pulse">
+<span class="w-1.5 h-1.5 rounded-full bg-on-error"></span> LIVE 65'
+                </div>
+<div class="flex justify-between items-center w-full mb-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant">ARG</span>
+<span class="font-stat-value text-stat-value text-on-surface">2 - 0</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">MEX</span>
+</div>
+<div class="text-center font-body-sm text-body-sm text-outline">Group C</div>
+</div>
+<!-- Disabled Prediction Form -->
+<div class="md:w-2/3 p-md flex flex-col justify-center bg-surface-container-lowest relative">
+<!-- Overlay to clearly show it's locked -->
+<div class="absolute inset-0 bg-surface-container-lowest/50 backdrop-blur-[1px] z-10 flex items-center justify-center">
+<div class="bg-surface border border-outline-variant px-sm py-xs rounded-full flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">lock</span>
+<span class="font-label-bold text-label-bold text-outline uppercase">Match Started - Locked</span>
+</div>
+</div>
+<div class="flex justify-center items-center gap-md opacity-50 pointer-events-none">
+<div class="flex flex-col items-center gap-xs">
+<input class="w-16 h-20 text-center font-headline-lg text-headline-lg text-on-surface-variant bg-surface border border-outline-variant rounded-lg" disabled="" type="number" value="2">
+</div>
+<span class="font-headline-md text-headline-md text-outline-variant">-</span>
+<div class="flex flex-col items-center gap-xs">
+<input class="w-16 h-20 text-center font-headline-lg text-headline-lg text-on-surface-variant bg-surface border border-outline-variant rounded-lg" disabled="" type="number" value="1">
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
