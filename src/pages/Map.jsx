@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import api from '../services/api';
 
+// Componente para invalidar el tamaño del mapa una vez renderizado el contenedor
+const MapInvalidator = () => {
+  const map = useMap();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [map]);
+  return null;
+};
+
 // Solución al problema de carga de iconos por defecto de Leaflet en Vite/Vite builds
 const customMarkerIcon = new L.DivIcon({
-  html: `<div className="w-6 h-6 rounded-full bg-primary border-2 border-white shadow-lg flex items-center justify-center text-white"><span className="material-symbols-outlined text-[14px]">sports_soccer</span></div>`,
+  html: `<div class="w-6 h-6 rounded-full bg-primary border-2 border-white shadow-lg flex items-center justify-center text-white"><span class="material-symbols-outlined text-[14px]">sports_soccer</span></div>`,
   className: 'custom-leaflet-marker',
   iconSize: [24, 24],
   iconAnchor: [12, 12],
@@ -76,6 +88,7 @@ const Map = () => {
           zoom={4} 
           style={{ width: '100%', height: '100%' }}
         >
+          <MapInvalidator />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
