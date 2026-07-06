@@ -64,15 +64,28 @@ const MyPredictions = () => {
                 <div className="flex items-center justify-between gap-sm">
                   <div className="w-5/12"><TeamBadge team={match?.homeTeam} layout="horizontal" /></div>
                   <div className="w-2/12 text-center">
-                    <p className="text-[10px] font-bold uppercase tracking-wide text-on-surface-variant">Tu marcador</p>
-                    <p className="text-xl font-extrabold text-primary">{prediction.predictedHomeScore} - {prediction.predictedAwayScore}</p>
+                    {prediction.status === 'void' ? (
+                      <>
+                        <p className="text-[10px] font-bold uppercase tracking-wide text-red-500">Anulado</p>
+                        <p className="text-xl font-extrabold text-red-400">---</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-[10px] font-bold uppercase tracking-wide text-on-surface-variant">Tu marcador</p>
+                        <p className="text-xl font-extrabold text-primary">{prediction.predictedHomeScore} - {prediction.predictedAwayScore}</p>
+                      </>
+                    )}
                     {match?.status === 'finished' && <p className="text-xs font-bold text-on-surface">Real: {match.homeScore} - {match.awayScore}</p>}
                   </div>
                   <div className="w-5/12"><TeamBadge team={match?.awayTeam} layout="horizontal" /></div>
                 </div>
                 <div className="mt-sm flex items-center justify-between border-t border-outline-variant pt-sm">
                   <span className="text-xs font-bold uppercase tracking-wide text-on-surface-variant">Puntos</span>
-                  <span className="text-lg font-extrabold text-primary">{prediction.points || 0} pts</span>
+                  {prediction.status === 'void' ? (
+                    <span className="text-lg font-extrabold text-red-400">0 pts (anulado)</span>
+                  ) : (
+                    <span className="text-lg font-extrabold text-primary">{prediction.points || 0} pts</span>
+                  )}
                 </div>
               </article>
             );

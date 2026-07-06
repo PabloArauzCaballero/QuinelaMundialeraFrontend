@@ -125,10 +125,11 @@ const Dashboard = () => {
 
       <ErrorBanner error={error} requestId={requestId} onRetry={loadDashboard} />
 
-      <section className="grid grid-cols-1 gap-md md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-1 gap-md md:grid-cols-2 xl:grid-cols-5">
         <StatCard label="Puntos totales" value={totalPoints} helper="Acumulado personal" icon="emoji_events" />
         <StatCard label="Pendientes" value={pendingCount} helper="Partidos por pronosticar" icon="pending_actions" tone="blue" />
         <StatCard label="Pronósticos" value={predictedCount} helper="Marcadores registrados" icon="fact_check" />
+        <StatCard label="Grupos" value={groups.length} helper="A los que perteneces" icon="groups" />
         <StatCard label="Mejor ranking" value={bestRank === '-' ? '-' : `#${bestRank}`} helper="Entre tus grupos" icon="leaderboard" tone="blue" />
       </section>
 

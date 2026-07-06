@@ -198,6 +198,7 @@ const Login = ({ initialMode = 'login' }) => {
                       id="reg-name" 
                       placeholder="Juan Pérez" 
                       required 
+                      minLength={2}
                       type="text"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
