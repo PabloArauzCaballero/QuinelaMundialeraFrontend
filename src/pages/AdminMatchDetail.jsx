@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import ErrorBanner from '../components/ErrorBanner';
 import LoadingState from '../components/LoadingState';
 import PageHeader from '../components/PageHeader';
@@ -47,6 +48,8 @@ const AdminMatchDetail = () => {
     loadData();
   }, [matchId]);
 
+  useAutoRefresh(loadData);
+
   const updateField = (field, value) => setForm((current) => ({ ...current, [field]: value }));
 
   const save = async (event) => {
@@ -55,7 +58,7 @@ const AdminMatchDetail = () => {
       setSaving(true);
       setError(null);
       const payload = {
-        stadiumId: form.stadiumId,
+        stadiumId: form.stadiumId || undefined,
         startsAt: form.startsAt ? new Date(form.startsAt).toISOString() : undefined,
         status: form.status,
       };

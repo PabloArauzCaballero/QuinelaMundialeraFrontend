@@ -1,18 +1,64 @@
+const normalizeArrayItem = (item) => {
+  if (!item || typeof item !== 'object' || Array.isArray(item)) return item;
+
+  const homeScore = item.predictedHomeScore ?? item.homeScore;
+  const awayScore = item.predictedAwayScore ?? item.awayScore;
+
+  if (homeScore !== undefined || awayScore !== undefined) {
+    return {
+      ...item,
+      homeScore,
+      awayScore,
+      predictedHomeScore: homeScore,
+      predictedAwayScore: awayScore,
+    };
+  }
+
+  return item;
+};
+
 export const asArray = (value) => {
-  if (Array.isArray(value)) return value;
-  if (Array.isArray(value?.data)) return value.data;
-  if (Array.isArray(value?.items)) return value.items;
-  if (Array.isArray(value?.results)) return value.results;
-  if (Array.isArray(value?.matches)) return value.matches;
-  if (Array.isArray(value?.predictions)) return value.predictions;
-  if (Array.isArray(value?.groups)) return value.groups;
+  if (Array.isArray(value)) return value.map(normalizeArrayItem);
+  if (!value || typeof value !== 'object') return [];
+
+  const keys = [
+    'items',
+    'data',
+    'results',
+    'rows',
+    'matches',
+    'predictions',
+    'groups',
+    'groupPositions',
+    'members',
+    'leaderboard',
+    'rankings',
+    'runs',
+    'teams',
+    'stadiums',
+  ];
+
+  for (const key of keys) {
+    const nested = value[key];
+    if (Array.isArray(nested)) return nested.map(normalizeArrayItem);
+    if (nested && typeof nested === 'object') {
+      const result = asArray(nested);
+      if (result.length > 0) return result;
+    }
+  }
+
   return [];
 };
 
-export const getErrorInfo = (err, fallback = 'No se pudo completar la operación.') => ({
-  message: err?.response?.data?.message || err?.response?.data?.error?.message || err?.message || fallback,
-  requestId: err?.response?.data?.requestId || err?.response?.headers?.['x-request-id'] || null,
-});
+export const getErrorInfo = (err, fallback = 'No se pudo completar la operación.') => {
+  const details = err?.response?.data?.details || err?.response?.data?.error?.details || [];
+  const validationMessage = Array.isArray(details) ? details[0]?.message : null;
+
+  return {
+    message: validationMessage || err?.response?.data?.message || err?.response?.data?.error?.message || err?.message || fallback,
+    requestId: err?.response?.data?.requestId || err?.response?.headers?.['x-request-id'] || null,
+  };
+};
 
 export const fullNameOf = (user) => user?.fullName || user?.name || user?.displayName || user?.email || 'Participante';
 

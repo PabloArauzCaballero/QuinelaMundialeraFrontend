@@ -2,12 +2,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import ErrorBanner from '../components/ErrorBanner';
 import EmptyState from '../components/EmptyState';
 import LoadingState from '../components/LoadingState';
 import MatchCard from '../components/MatchCard';
 import PageHeader from '../components/PageHeader';
 import PredictionModal from '../components/PredictionModal';
+import FeedbackModal from '../components/FeedbackModal';
 import StatCard from '../components/StatCard';
 import { asArray, fullNameOf, getErrorInfo, sortByDate } from '../utils/formatters';
 import { useAuth } from '../context/AuthContext';
@@ -26,6 +28,7 @@ const Dashboard = () => {
   const [saving, setSaving] = useState(false);
   const [modalError, setModalError] = useState(null);
   const [modalRequestId, setModalRequestId] = useState(null);
+  const [feedback, setFeedback] = useState(null);
 
   const loadDashboard = async () => {
     try {
@@ -69,6 +72,8 @@ const Dashboard = () => {
     loadDashboard();
   }, []);
 
+  useAutoRefresh(loadDashboard);
+
   const pendingMatches = useMemo(() => sortByDate(matches)
     .filter((match) => !predictions[match.id] && new Date(match.startsAt) > new Date())
     .slice(0, 4), [matches, predictions]);
@@ -97,11 +102,13 @@ const Dashboard = () => {
         });
       }
       setSelectedMatch(null);
+      setFeedback({ type: 'success', message: 'Tu pronóstico se guardó correctamente.' });
       await loadDashboard();
     } catch (err) {
       const info = getErrorInfo(err, 'Error al guardar el pronóstico.');
       setModalError(info.message);
       setModalRequestId(info.requestId);
+      setFeedback({ type: 'error', message: info.message, requestId: info.requestId });
     } finally {
       setSaving(false);
     }
@@ -205,6 +212,8 @@ const Dashboard = () => {
         onClose={() => setSelectedMatch(null)}
         onSave={savePrediction}
       />
+
+      <FeedbackModal feedback={feedback} onClose={() => setFeedback(null)} />
     </div>
   );
 };

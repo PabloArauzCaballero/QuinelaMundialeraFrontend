@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from 'react';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import ErrorBanner from '../components/ErrorBanner';
 import EmptyState from '../components/EmptyState';
 import LoadingState from '../components/LoadingState';
 import MatchCard from '../components/MatchCard';
 import PageHeader from '../components/PageHeader';
 import PredictionModal from '../components/PredictionModal';
+import FeedbackModal from '../components/FeedbackModal';
 import { asArray, getErrorInfo, groupByDate, sortByDate } from '../utils/formatters';
 
 const Fixture = () => {
@@ -22,6 +24,7 @@ const Fixture = () => {
   const [saving, setSaving] = useState(false);
   const [modalError, setModalError] = useState(null);
   const [modalRequestId, setModalRequestId] = useState(null);
+  const [feedback, setFeedback] = useState(null);
 
   const loadData = async () => {
     try {
@@ -55,6 +58,8 @@ const Fixture = () => {
     loadData();
   }, [phase, status, date]);
 
+  useAutoRefresh(loadData);
+
   const matchesByDate = useMemo(() => groupByDate(matches), [matches]);
 
   const savePrediction = async (payload) => {
@@ -75,11 +80,13 @@ const Fixture = () => {
         });
       }
       setSelectedMatch(null);
+      setFeedback({ type: 'success', message: 'Tu pronóstico se guardó correctamente.' });
       await loadData();
     } catch (err) {
       const info = getErrorInfo(err, 'Error al guardar el pronóstico.');
       setModalError(info.message);
       setModalRequestId(info.requestId);
+      setFeedback({ type: 'error', message: info.message, requestId: info.requestId });
     } finally {
       setSaving(false);
     }
@@ -160,6 +167,8 @@ const Fixture = () => {
         onClose={() => setSelectedMatch(null)}
         onSave={savePrediction}
       />
+
+      <FeedbackModal feedback={feedback} onClose={() => setFeedback(null)} />
     </div>
   );
 };

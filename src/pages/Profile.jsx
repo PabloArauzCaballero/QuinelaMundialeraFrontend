@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 
 const Profile = () => {
   const { refreshUser } = useAuth();
@@ -33,6 +34,8 @@ const Profile = () => {
   useEffect(() => {
     loadProfile();
   }, []);
+
+  useAutoRefresh(loadProfile);
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();

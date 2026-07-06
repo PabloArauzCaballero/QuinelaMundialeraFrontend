@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 
 // Componente para invalidar el tamaño del mapa una vez renderizado el contenedor
 const MapInvalidator = () => {
@@ -53,6 +54,8 @@ const Map = () => {
     loadMapData();
   }, []);
 
+  useAutoRefresh(loadMapData);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
@@ -94,13 +97,16 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           
-          {stadiums.map((stadium) => {
+          {stadiums
+            .map((stadium) => ({ ...stadium, latitude: Number(stadium.latitude), longitude: Number(stadium.longitude) }))
+            .filter((stadium) => Number.isFinite(stadium.latitude) && Number.isFinite(stadium.longitude))
+            .map((stadium) => {
             // Filtrar partidos que se juegan en esta sede
             const stadiumMatches = matches.filter((m) => m.stadium?.id === stadium.id);
 
             return (
-              <Marker 
-                key={stadium.id} 
+              <Marker
+                key={stadium.id}
                 position={[stadium.latitude, stadium.longitude]}
                 icon={customMarkerIcon}
               >

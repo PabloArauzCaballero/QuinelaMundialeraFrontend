@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import ErrorBanner from '../components/ErrorBanner';
 import LoadingState from '../components/LoadingState';
 import PageHeader from '../components/PageHeader';
 import PredictionModal from '../components/PredictionModal';
+import FeedbackModal from '../components/FeedbackModal';
 import { asArray, getErrorInfo, isMatchClosedForPrediction, sortByDate } from '../utils/formatters';
 
 const RegisterPrediction = () => {
@@ -19,6 +21,7 @@ const RegisterPrediction = () => {
   const [requestId, setRequestId] = useState(null);
   const [modalError, setModalError] = useState(null);
   const [modalRequestId, setModalRequestId] = useState(null);
+  const [feedback, setFeedback] = useState(null);
 
   const loadData = async () => {
     try {
@@ -49,6 +52,8 @@ const RegisterPrediction = () => {
     loadData();
   }, [matchId]);
 
+  useAutoRefresh(loadData);
+
   const savePrediction = async (payload) => {
     try {
       setSaving(true);
@@ -65,14 +70,21 @@ const RegisterPrediction = () => {
           predictedAwayScore: payload.predictedAwayScore,
         });
       }
-      navigate('/predictions');
+      setFeedback({ type: 'success', message: 'Tu pronóstico se guardó correctamente.' });
     } catch (err) {
       const info = getErrorInfo(err, 'Error al guardar el pronóstico.');
       setModalError(info.message);
       setModalRequestId(info.requestId);
+      setFeedback({ type: 'error', message: info.message, requestId: info.requestId });
     } finally {
       setSaving(false);
     }
+  };
+
+  const closeFeedback = () => {
+    const wasSuccess = feedback?.type === 'success';
+    setFeedback(null);
+    if (wasSuccess) navigate('/predictions');
   };
 
   if (loading) return <LoadingState label="Preparando registro de pronóstico..." />;
@@ -93,6 +105,8 @@ const RegisterPrediction = () => {
       ) : (
         <PredictionModal match={match} prediction={prediction} saving={saving} error={modalError} requestId={modalRequestId} onClose={() => navigate('/fixture')} onSave={savePrediction} />
       )}
+
+      <FeedbackModal feedback={feedback} onClose={closeFeedback} />
     </div>
   );
 };

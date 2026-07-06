@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import EmptyState from '../components/EmptyState';
 import ErrorBanner from '../components/ErrorBanner';
 import LoadingState from '../components/LoadingState';
@@ -32,6 +33,8 @@ const AdminSyncHistory = () => {
   useEffect(() => {
     loadRuns();
   }, []);
+
+  useAutoRefresh(loadRuns);
 
   const runSync = async () => {
     try {

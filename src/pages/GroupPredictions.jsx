@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import EmptyState from '../components/EmptyState';
 import ErrorBanner from '../components/ErrorBanner';
 import LoadingState from '../components/LoadingState';
@@ -44,6 +45,8 @@ const GroupPredictions = () => {
   useEffect(() => {
     loadPredictions();
   }, [groupId]);
+
+  useAutoRefresh(loadPredictions);
 
   if (loading) return <LoadingState label="Cargando pronósticos del grupo..." />;
 

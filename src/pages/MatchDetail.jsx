@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import ErrorBanner from '../components/ErrorBanner';
 import LoadingState from '../components/LoadingState';
 import PageHeader from '../components/PageHeader';
@@ -46,6 +47,8 @@ const MatchDetail = () => {
   useEffect(() => {
     loadMatch();
   }, [matchId]);
+
+  useAutoRefresh(loadMatch);
 
   if (loading) return <LoadingState label="Cargando detalle del partido..." />;
 

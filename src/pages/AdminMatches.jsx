@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import api from '../services/api';
+import { useAutoRefresh } from '../services/useAutoRefresh';
 import ErrorBanner from '../components/ErrorBanner';
 import LoadingState from '../components/LoadingState';
 import MatchCard from '../components/MatchCard';
@@ -15,6 +16,7 @@ const AdminMatches = () => {
   const [requestId, setRequestId] = useState(null);
   const [creating, setCreating] = useState(false);
   const [syncing, setSyncing] = useState(false);
+  const [importing, setImporting] = useState(false);
   const [form, setForm] = useState({ homeTeamId: '', awayTeamId: '', stadiumId: '', phase: 'group', startsAt: '' });
 
   const loadData = async () => {
@@ -41,6 +43,8 @@ const AdminMatches = () => {
   useEffect(() => {
     loadData();
   }, []);
+
+  useAutoRefresh(loadData);
 
   const canSubmit = useMemo(() => form.homeTeamId && form.awayTeamId && form.stadiumId && form.startsAt && form.homeTeamId !== form.awayTeamId, [form]);
 
@@ -79,6 +83,21 @@ const AdminMatches = () => {
     }
   };
 
+  const runImportWorldCup = async () => {
+    try {
+      setImporting(true);
+      setError(null);
+      await api.post('/admin/sync/import-world-cup', { mode: 'season' });
+      await loadData();
+    } catch (err) {
+      const info = getErrorInfo(err, 'Error al importar los partidos del Mundial.');
+      setError(info.message);
+      setRequestId(info.requestId);
+    } finally {
+      setImporting(false);
+    }
+  };
+
   if (loading) return <LoadingState label="Cargando administración de partidos..." />;
 
   return (
@@ -87,7 +106,12 @@ const AdminMatches = () => {
         eyebrow="Admin partidos"
         title="Administración de encuentros"
         description="Crea partidos, revisa el fixture y ejecuta actualizaciones oficiales de resultados."
-        actions={<button type="button" onClick={runSync} disabled={syncing} className="rounded-lg bg-secondary-container px-md py-sm text-sm font-extrabold text-on-secondary-container disabled:opacity-50">{syncing ? 'Sincronizando...' : 'Sincronizar resultados'}</button>}
+        actions={
+          <>
+            <button type="button" onClick={runImportWorldCup} disabled={importing} className="rounded-lg border border-outline-variant px-md py-sm text-sm font-extrabold text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50">{importing ? 'Importando...' : 'Importar fixtures del Mundial'}</button>
+            <button type="button" onClick={runSync} disabled={syncing} className="rounded-lg bg-secondary-container px-md py-sm text-sm font-extrabold text-on-secondary-container disabled:opacity-50">{syncing ? 'Sincronizando...' : 'Sincronizar resultados'}</button>
+          </>
+        }
       />
       <ErrorBanner error={error} requestId={requestId} onRetry={loadData} />
 
