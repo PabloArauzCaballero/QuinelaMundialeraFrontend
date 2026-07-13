@@ -10,6 +10,7 @@ const CreateOrJoinGroup = () => {
   const [groupName, setGroupName] = useState('');
   const [joinCode, setJoinCode] = useState('');
   const [generatedCode, setGeneratedCode] = useState('');
+  const [createdGroupId, setCreatedGroupId] = useState('');
   const [savingCreate, setSavingCreate] = useState(false);
   const [savingJoin, setSavingJoin] = useState(false);
   const [error, setError] = useState(null);
@@ -29,7 +30,10 @@ const CreateOrJoinGroup = () => {
       setRequestId(null);
       const response = await api.post('/groups', { name: groupName.trim() });
       setGeneratedCode(response.data.invitationCode || response.data.code || '');
-      if (response.data.id) navigate(`/groups/${response.data.id}`);
+      // Se muestra el código en la misma página (no se redirige) para que el
+      // usuario lo vea y copie. El botón "Ir al grupo" navega cuando él quiera.
+      if (response.data.id) setCreatedGroupId(response.data.id);
+      setGroupName('');
     } catch (err) {
       handleError(err, 'Error al crear el grupo.');
     } finally {
@@ -86,6 +90,11 @@ const CreateOrJoinGroup = () => {
                 <span className="font-mono text-2xl font-extrabold tracking-[0.25em] text-primary">{generatedCode}</span>
                 <button type="button" onClick={copyGeneratedCode} className="rounded-lg border border-primary px-sm py-xs text-xs font-extrabold text-primary">Copiar</button>
               </div>
+              {createdGroupId && (
+                <button type="button" onClick={() => navigate(`/groups/${createdGroupId}`)} className="mt-sm w-full rounded-lg bg-primary py-sm text-sm font-extrabold uppercase tracking-wide text-on-primary">
+                  Ir al grupo
+                </button>
+              )}
             </div>
           )}
         </form>
