@@ -26,6 +26,8 @@ const PredictionModal = ({ match, prediction, saving, error, requestId, onClose,
     });
   };
 
+  // NOTES: 
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-md backdrop-blur-sm">
       <div className="w-full max-w-xl rounded-xl border border-outline-variant bg-surface p-md shadow-2xl">
