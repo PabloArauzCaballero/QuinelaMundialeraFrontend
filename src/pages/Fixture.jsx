@@ -39,7 +39,7 @@ const Fixture = () => {
         api.get('/matches', { params }),
         api.get('/predictions/me'),
       ]);
-      setMatches(sortByDate(asArray(matchesRes.data)));
+      setMatches(sortByDate(asArray(matchesRes.data)).reverse());
       const map = {};
       asArray(predictionsRes.data).forEach((prediction) => {
         map[prediction.matchId || prediction.match?.id] = prediction;
